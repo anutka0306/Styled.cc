@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '63b3cf40d7bd86ac6bcd443e5e50fb8a21aa544c',
+        'reference' => '7b401389398e46627343b9e7b340b86e9b4c915d',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '63b3cf40d7bd86ac6bcd443e5e50fb8a21aa544c',
+            'reference' => '7b401389398e46627343b9e7b340b86e9b4c915d',
             'dev_requirement' => false,
         ),
         'composer/package-versions-deprecated' => array(
@@ -182,12 +182,12 @@
             'dev_requirement' => false,
         ),
         'easycorp/easyadmin-bundle' => array(
-            'pretty_version' => 'v2.3.12',
-            'version' => '2.3.12.0',
+            'pretty_version' => 'v3.4.1',
+            'version' => '3.4.1.0',
             'type' => 'symfony-bundle',
             'install_path' => __DIR__ . '/../easycorp/easyadmin-bundle',
             'aliases' => array(),
-            'reference' => 'a51b3e5eaa5bfafda9ed2791d2a2e0735c845893',
+            'reference' => 'b4b17bf13e954ac61badd5286d9ea247676c0a9c',
             'dev_requirement' => false,
         ),
         'egulias/email-validator' => array(
@@ -344,7 +344,7 @@
             'install_path' => __DIR__ . '/../nikic/php-parser',
             'aliases' => array(),
             'reference' => 'fe14cf3672a149364fb66dfe11bf6549af899f94',
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'ocramius/package-versions' => array(
             'dev_requirement' => false,
@@ -356,69 +356,6 @@
             'dev_requirement' => false,
             'replaced' => array(
                 0 => '^2.1',
-            ),
-        ),
-        'pagerfanta/core' => array(
-            'dev_requirement' => false,
-            'replaced' => array(
-                0 => 'v2.7.1',
-            ),
-        ),
-        'pagerfanta/doctrine-collections-adapter' => array(
-            'dev_requirement' => false,
-            'replaced' => array(
-                0 => 'v2.7.1',
-            ),
-        ),
-        'pagerfanta/doctrine-dbal-adapter' => array(
-            'dev_requirement' => false,
-            'replaced' => array(
-                0 => 'v2.7.1',
-            ),
-        ),
-        'pagerfanta/doctrine-mongodb-odm-adapter' => array(
-            'dev_requirement' => false,
-            'replaced' => array(
-                0 => 'v2.7.1',
-            ),
-        ),
-        'pagerfanta/doctrine-orm-adapter' => array(
-            'dev_requirement' => false,
-            'replaced' => array(
-                0 => 'v2.7.1',
-            ),
-        ),
-        'pagerfanta/doctrine-phpcr-odm-adapter' => array(
-            'dev_requirement' => false,
-            'replaced' => array(
-                0 => 'v2.7.1',
-            ),
-        ),
-        'pagerfanta/elastica-adapter' => array(
-            'dev_requirement' => false,
-            'replaced' => array(
-                0 => 'v2.7.1',
-            ),
-        ),
-        'pagerfanta/pagerfanta' => array(
-            'pretty_version' => 'v2.7.1',
-            'version' => '2.7.1.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../pagerfanta/pagerfanta',
-            'aliases' => array(),
-            'reference' => '630f38d57c86b67565b644db9d270ffb6d67123f',
-            'dev_requirement' => false,
-        ),
-        'pagerfanta/solarium-adapter' => array(
-            'dev_requirement' => false,
-            'replaced' => array(
-                0 => 'v2.7.1',
-            ),
-        ),
-        'pagerfanta/twig' => array(
-            'dev_requirement' => false,
-            'replaced' => array(
-                0 => 'v2.7.1',
             ),
         ),
         'paragonie/random_compat' => array(
@@ -667,8 +604,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0',
-                1 => '1.0.0',
+                0 => '1.0.0',
+                1 => '1.0',
             ),
         ),
         'psr/simple-cache-implementation' => array(
@@ -1298,6 +1235,15 @@
             'reference' => 'eca0bf41ed421bed1b57c4958bab16aa86b757d0',
             'dev_requirement' => false,
         ),
+        'symfony/polyfill-uuid' => array(
+            'pretty_version' => 'v1.23.0',
+            'version' => '1.23.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/polyfill-uuid',
+            'aliases' => array(),
+            'reference' => '9165effa2eb8a31bb3fa608df9d529920d21ddd9',
+            'dev_requirement' => false,
+        ),
         'symfony/process' => array(
             'pretty_version' => 'v5.1.11',
             'version' => '5.1.11.0',
@@ -1506,6 +1452,15 @@
             'install_path' => __DIR__ . '/../symfony/twig-pack',
             'aliases' => array(),
             'reference' => '08a73e833e07921c464336deb7630f93e85ef930',
+            'dev_requirement' => false,
+        ),
+        'symfony/uid' => array(
+            'pretty_version' => 'v5.1.11',
+            'version' => '5.1.11.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/uid',
+            'aliases' => array(),
+            'reference' => 'c679017d2c9cf5fffdc6796059c6d85bff63f016',
             'dev_requirement' => false,
         ),
         'symfony/validator' => array(

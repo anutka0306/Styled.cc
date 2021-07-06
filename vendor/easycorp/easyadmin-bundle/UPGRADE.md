@@ -1,430 +1,403 @@
-EasyAdmin Upgrade Guide
-=======================
+Upgrade between EasyAdmin 3.x versions
+======================================
 
-This document describes the backwards incompatible changes introduced by each
-EasyAdminBundle version and the needed changes to be made before upgrading to
-the next version.
+EasyAdmin 3.4.0
+---------------
 
-Upgrade to 3.x
---------------
+### Migrated to Bootstrap 5
 
-Read the [Upgrading from EasyAdmin 2 to EasyAdmin 3](https://symfony.com/doc/master/bundles/EasyAdminBundle/upgrade.html) guide.
+This version of EasyAdmin upgrades Bootstrap from version 4 to version 5.
+This only affects you if you have developed custom templates or changed the
+default templates with your own HTML/CSS/JavaScript code.
 
-Upgrade to 2.3.1
-----------------
+Read the [Migrating to Bootstrap v5 guide](https://getbootstrap.com/docs/5.0/migration/)
+to learn about the main changes needed to upgrade to this version.
 
-* The forms now apply the form themes with the `only` keyword, meaning that the
-  application form themes are no longer applied to them. If you need some custom
-  form themes in the backend, use the `form_theme` option to add them.
-  See https://symfony.com/doc/2.x/bundles/EasyAdminBundle/book/configuration-reference.html#form-theme
+### Removed jQuery
 
-Upgrade to 2.2.2
-----------------
+**jQuery library is no longer used or included in EasyAdmin**. We did this
+because Bootstrap 5 moved to native JavaScript widgets, so jQuery usage is no
+longer mandatory when using Bootstrap.
 
-* The Bootstrap CSS/JavaScript contents are no longer divided into two files,
-  one with the code used by EasyAdmin and the other one with the rest of
-  Bootstrap contents. Now, there is only one file for the entire CSS and another
-  one for the entire JavaScript.
+This only affects you if your backend has custom JavaScript code that uses
+jQuery and you don't include jQuery yourself (your code relies on the jQuery
+version included by EasyAdmin).
 
-  Most users don't have to do anything about this change. However, if you loaded
-  `bootstrap-all.css/.js` in your backend explicitly to have access to the
-  entire Bootstrap framework, you should stop including them because they no
-  longer exist.
+The solution depends on how you manage your custom backend assets:
 
-* The HTML structure of the paginator has been updated to match the official
-  Bootstrap pagination component. This change only affects you if you have
-  defined custom CSS styles for the pagination of the backend. Even in that
-  case, most CSS classes have been maintained, so the changes should be minimal.
+* If you use Webpack Encore, add jQuery to your dependencies (`yarn add jquery --dev`)
+  and follow the [jQuery integration in Webpack Encore guide](https://symfony.com/doc/current/frontend/encore/legacy-applications.html).
+* If you don't use any JavaScript asset builder, download jQuery as a JavaScript
+  file and store it somewhere in your application (e.g. `<your project>/public/js/jquery.min.js`)
+  and then add that file in your backend with the [addJs() method](https://symfony.com/doc/current/bundles/EasyAdminBundle/design.html#adding-custom-web-assets).
 
-Upgrade to 2.0.0
-----------------
+### Text Elements with HTML Contents
 
-Although EasyAdmin 2.0 is a new major version, it doesn't contain many
-backward compatibility breaks when you upgrade from EasyAdmin 1.x versions.
-Also, the breaking changes are related to mostly unimportant features.
+Text fields and Textarea fields no longer strip tags in INDEX page.
+Use the new `stripTags()` method to keep the previous behavior:
 
-> **TIP**
+```php
+// before
+yield TextField::new('someField');
+
+// after
+yield TextField::new('someField')->stripTags();
+```
+
+### Autocomplete Fields
+
+The `Select2` JavaScript library, which is based on jQuery, has been
+replaced bt `TomSelect`, a pure-JavaScript library. This change is
+transparent when using EasyAdmin features, but if you create custom
+form types and want to display autocomplete fields for your `<select>`
+lists, you must change the following:
+
+```
+// Before
+<select data-widget="select2">
+    <!-- ... -->
+</select>
+
+// After
+<select data-ea-widget="ea-autocomplete">
+    <!-- ... -->
+</select>
+```
+
+These are the configurable options of the new autocomplete
+fields and their previous equivalent options:
+
+```
+// Before
+<select
+    data-widget="select2"
+    data-ea-escape-markup="false"
+    data-select2-tags="true"
 >
-> If you use [Rector](https://github.com/rectorphp/rector), a tool to automate
-> the upgrade of PHP applications, you can upgrade your admin controllers to
-> EasyAdmin 2.0 running this command:
-> `$ ./vendor/bin/rector process /src --level easy-admin-bundle20`
-
-### Upgraded Requirements
-
-The most important change is that EasyAdmin now requires at least PHP 7.1.3 and
-Symfony ^4.1 components. If you can't upgrade these requirements, you can't
-upgrade to EasyAdmin 2.0 and you must keep using 1.x versions.
-
-### Deprecated Features
-
-Upgrade to the latest EasyAdmin 1.x version and you'll see in the application
-logs all the deprecated features that you are using. You must remove all of them
-before upgrading to EasyAdmin 2.x.
-
-Most deprecations are related to design config options that have been removed in
-EasyAdmin 2.x. Remove (or update appropriately) those deprecated options in
-your configuration file and you'll be ready to upgrade. The docs have also been
-updated to warn about any deprecated feature.
-
-### New Base Controller
-
-Symfony 4.2 has deprecated the base Controller class in favor of AbstractController
-class. They are similar, but AbstractController only allows you to access to
-some services using `$this->get('service_id')` instead of allowing you to access
-to all available services.
-
-EasyAdmin 1.x provided one base controller extending from Symfony's `Controller`.
-EasyAdmin 2.0 provides two base controllers:
-
-* The first one is the same as in EasyAdmin 1.x: `EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController`
-  It extends from the deprecated `Controller` class, so you'll see deprecation
-  messages in your logs. Using it will ensure that your app keeps working because
-  you can still use `$this->get('service_id')` in the controller.
-* The second one is a new controller in EasyAdmin 2.x called `EasyCorp\Bundle\EasyAdminBundle\Controller\EasyAdminController`
-  It extends from `AbstractController` so you won't get any deprecation message.
-  However, your apps may break if they use `$this->get('service_id')` in the
-  controller.
-
-It's recommended to use the new `EasyAdminController` base controller to get
-rid of legacy deprecations. If you need to get services, don't use `$this->get('service_id')`
-and instead, inject the services in your controller's constructor or actions as
-recommended in Symfony 4.x apps.
-
-**Before**
-
-Extend from `EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController` class and:
-
-```php
-// in some place from extended child controller:
-$this->get('custom_service')->doSomething();
-```
-
-**After**
-
-Extend from `EasyCorp\Bundle\EasyAdminBundle\Controller\EasyAdminController` class and:
-
-**Option 1**: Inject your service as argument of the constructor:
-
-```php
-private $customService;
-
-public function __constructor(CustomService $customService)
-{
-    $this->customService = $customService;
-}
-
-// then use $this->customService instead of $this->get('custom_service')
-```
-
-**Option 2**: Override the `getSubscribedServices()` method and add your services
-to the list:
-
-```php
-public static function getSubscribedServices()
-{
-    return parent::getSubscribedServices() + [
-        'custom_service' => CustomService::class,
-    ];
-}
-
-// then use $this->get('custom_service') as before
-```
-
-### Redesigned Interface
-
-The interface of the backend has been redesigned entirely. We kept all the
-original Twig blocks and their names, so your templates shouldn't break when
-upgrading.
-
-We also kept most of CSS classes and IDs, so your design customizations should
-keep working. However, we changed some CSS classes/IDs and we removed some
-HTML attributes related to the responsive design. You may need to tweak a bit
-your CSS customizations to fix those edge cases.
-
-Finally, the design customization is now based on CSS variables, so it's easier
-to fully customize the entire backend interface. Read the updated chapter about
-design to learn all the details.
-
-Upgrade to 1.16.4 (22/January/2017)
------------------------------------
-
-* The `BaseException` class has changed the signature of its constructor. It now
-  receives a single argument of type `ExceptionContext` (this class was also added
-  in this new version). Your applications should not be affected because it's
-  highly uncommon to use these built-in exceptions directly.
-
-Upgrade to 1.15.2 (9/October/2016)
------------------------------------
-
-* The template fragments used to render each property value (e.g.
-  `field_array.html.twig`, `label_null.html.twig`, etc.) now receive two new
-  variables called `entity_config` and `backend_config`, which are useful for
-  advanced backends.
-* The `image` fields and the VichUploader files and images now are rendered
-  using the `asset()` Twig function. Depending on your configuration, you may
-  need to change or remove EasyAdmin's `base_path` option and define the proper
-  base path using Symfony's asset configuration.
-
-Upgrade to 1.13.0 (11/May/2016)
----------------------------------
-
-* The configuration of the backend is no longer processed in a compiler pass
-  but generated with a cache warmer. This is done to avoid issues with Doctrine
-  and Twig services, which are needed to process the configuration but they are
-  not fully available during the container compilation.
-* In the development environment, the backend config is fully processed for each
-  request, so you might notice a slight performance impact. In exchange, you
-  won't suffer any cache problem or any outdated config problem. In production
-  the backend config is fully processed in the cache warmer or, if any problem
-  happened, during the first request. Then the config is cached in the file
-  system and reused in the following requests.
-* The `easyadmin.configurator` service has been renamed to `easyadmin.config.manager`
-* The `easyadmin.config` container parameter no longer contains the fully
-  processed backend configuration. Now it only contains the configuration that
-  the developer defined in their YAML files. The equivalent way to get the
-  fully processed backend config is to use the `easyadmin.config.manager`
-  service:
-
-  // Before
-  $backendConfig = $this->getParameter('easyadmin.config');
-
-  // After
-  $backendConfig = $this->get('easyadmin.config.manager')->getBackendConfig();
-
-Upgrade to 1.12.6 (15/April/2016)
----------------------------------
-
-* Web assets are now combined and minified to improve frontend performance. In
-  previous versions, CSS and JS were included by loading lots of small files.
-  Starting from this version, the backend only loads one CSS file (called
-  `easyadmin-all.min.css`) and one JS file (called `easyadmin-all.min.js`).
-  The individual CSS/JS files are still available in case you override the
-  backend design and want to pick some of them individually.
-  The new CSS/JSS files should be available in your application after upgrading
-  this version bundle. If you have any problem, install the new assets executing
-  the `assets:install --symlinks` console command.
-
-Upgrade to 1.12.5 (03/March/2016)
----------------------------------
-
- * The `renderCssAction()` method of the AdminController has been deprecated and
-   its associated route `@Route("/_css/easyadmin.css", name="_easyadmin_render_css")`
-   has been removed. The custom CSS now is preprocessed during container compilation
-   and the result is stored in the `_internal.custom_css` option of the processed
-   backend configuration.
-
-Upgrade to 1.11.6 (26/February/2016)
-------------------------------------
-
- * `findBy()` and `createSearchQueryBuilder()` methods now receive two new
-   parameters called `$sortField` and `$sortDirection` to allow sorting the
-   search results.
-
-Upgrade to 1.9.5 (13/December/2015)
------------------------------------
-
- * The `isReadable` and `isWritable` options are no longer available for each
-   property metadata. These options were needed when we introspected the getters
-   and setters of the properties ourselves. We now use the Symfony PropertyAccessor
-   component to get and set values for entity properties.
-
- * The `Configurator::introspectGettersAndSetters()` method, the
-   `Reflection/ClassPropertyReflector` class and the `easyadmin.property_reflector`
-   service have been deleted and replaced by the use of the `PropertyAccessor`
-   class, its `getValue()` and `setValue()` methods and the `@property_accessor`
-   service.
-
-Upgrade to 1.9.2 (24/November/2015)
------------------------------------
-
- * The `render404error()` utility method has been removed from `AdminController`.
-   This method was no longer used since we started throwing custom exceptions
-   when an error occurs.
-
- * The `ajaxEdit()` method of the `AdminController` has been removed. This method
-   had nothing to do with editing an entity via Ajax. It was just used to toggle
-   the value of boolean properties. It has been replaced by a private method
-   called `updateEntityProperty()`.
-
-Upgrade to 1.8.0 (8/November/2015)
-----------------------------------
-
- * The options that define if a entity property is readable and/or writable have
-   changed their name to match the names used by Symfony:
-
-   ```php
-   // Before
-   $propertyMetadata['canBeGet'];
-   $propertyMetadata['canBeSet'];
-
-   // After
-   $propertyMetadata['isReadable'];
-   $propertyMetadata['isWritable'];
-   ```
-
-   This only affects you if you make a very advance use of the bundle and override
-   lots of its functionalities.
-
- * The `form.html.twig` template has been removed and therefore, you cannot define
-   the `easy_admin.design.templates.form` to override it by your own template.
-   If you want to customize the forms of the backend, use a proper Symfony form
-   theme and enable it in the `easy_admin.design.form_theme` option.
-
-Upgrade to 1.5.5 (22/June/2015)
--------------------------------
-
-In order to improve the consistency of the backend design, all CSS class names
-have been updated to use dashes instead of underscores, to match the syntax
-used by Bootstrap classes. This means that `field_date` is now `field-date`,
-`theme_boostrap...` is now `theme-bootstrap...`, etc.
-
-Moreover, the global `css` class applied to the `<body>` element of each view
-has changed:
-
-| View   | OLD `<body>` CSS class     | NEW `<body>` CSS class
-| ------ | -------------------------- | ---------------------------------------
-| `edit` | `admin edit <entity name>` | `easyadmin edit edit-<entity name>`
-| `list` | `admin list <entity name>` | `easyadmin list list-<entity name>`
-| `new`  | `admin new <entity name>`  | `easyadmin new new-<entity name>`
-| `show` | `admin show <entity name>` | `easyadmin show show-<entity name>`
-
-All these changes only affect you if your backend uses a custom stylesheet.
-
-Upgrade to 1.5.3 (26/May/2015)
-------------------------------
-
-The `class` option has been renamed to `css_class`.
-
-Before:
-
-```yaml
-easy_admin:
-    actions:
-        # ...
-            - { name: 'edit', class: 'danger' }
-    entities:
-        # ...
-        fields:
-            - { property: 'id', class: 'col-md-12' }
-```
-
-After:
-
-```yaml
-easy_admin:
-    actions:
-        # ...
-            - { name: 'edit', css_class: 'danger' }
-    entities:
-        # ...
-        fields:
-            - { property: 'id', css_class: 'col-md-12' }
-```
-
-Upgrade to 1.5.0 (17/May/2015)
-------------------------------
-
-### Some methods used to tweak AdminController behaviour have changed
-
-
-```php
-// Before
-protected function prepareNewEntityForPersist($entity) { ... }
+    <!-- ... -->
+</select>
 
 // After
-protected function prePersistEntity($entity) { ... }
-
-// You can also create custom methods for each entity
-protected function prePersistUserEntity($entity) { ... }
-protected function prePersistProductEntity($entity) { ... }
-// ...
+<select
+    data-ea-widget="ea-autocomplete"
+    data-ea-autocomplete-render-items-as-html="true"
+    data-ea-autocomplete-allow-item-create="true"
+>
+    <!-- ... -->
+</select>
 ```
+
+EasyAdmin 3.3.2
+---------------
+
+### CSS, JavaScript and Webpack Entries are passed as assets
+
+This is an internal change that only affects you if your application has
+customized the way EasyAdmin loads CSS/JS/Webpack entries in the templates.
+
+In previous EasyAdmin versions, assets were passed to templates as simple
+strings (e.g. `'/build/admin.css'` for a CSS asset). They were included as follows:
+
+    {% for js_asset in js_assets %}
+        <script src="{{ asset(js_asset) }}"></script>
+    {% endfor %}
+
+Starting from EasyAdmin 3.4.0, assets are passed as instances of
+`EasyCorp\Bundle\EasyAdminBundle\Dto\AssetDto`, which allows to configure all
+kinds of attributes and features for those assets. This is the same example as
+before using the new asset objects:
+
+    {% for js_asset in js_assets %}
+        {% if js_asset.preload %}
+            <link rel="preload" href="{{ ea_call_function_if_exists('preload', js_asset.value, { as: 'script', nopush: js_asset.nopush }) }}"
+            {% for attr, value in js_asset.htmlAttributes %}{{ attr }}="{{ value|e('html_attr') }}" {% endfor %}>
+        {% else %}
+            <script src="{{ asset(js_asset.value) }}" {{ js_asset.async ? 'async' }} {{ js_asset.defer ? 'defer' }}
+            {% for attr, value in js_asset.htmlAttributes %}{{ attr }}="{{ value|e('html_attr') }}" {% endfor %}></script>
+        {% endif %}
+    {% endfor %}
+
+EasyAdmin 3.3.0
+---------------
+
+### JavaScript files are included in the `<head>`
+
+JavaScript files, added via `addJsFile()` and/or `addWebpackEncoreEntry()`
+in CRUD's `configureAssets()` method, are now included in the HTML
+`<head>` element instead of at the bottom of the `<body>` element.
+
+You might need to change your JavaScript code a bit to wrap it inside the following:
+
+```js
+document.addEventListener('DOMContentLoaded', () => {
+
+    // put your JavaScript code here
+
+});
+```
+
+This ensures that your code is run once the page has been loaded. For Webpack
+Encore entries you can also set the `webpack_encore.script_attributes.defer`
+option to `true` to run those scripts after the entire page is loaded.
+
+EasyAdmin 3.2.0
+---------------
+
+This version introduced many changes related to routing and admin URLs generation.
+If you don't define custom actions, you don't have to make any changes in your
+application. If you define custom actions, EasyAdmin will make the needed changes
+transparently in most of the cases, but in some advanced use cases, you'll need
+to make some changes in your application.
+
+### Deprecated `crudId` query parameter
+
+**Summary**: you don't have to make any changes related to this, but you'll see
+some deprecation messages if you don't update your application code.
+
+The `crudId` query parameter has been deprecated. This parameter is a random
+looking alphanumeric code calculated based on the CRUD controller FQCN and the
+application `kernel.secret` parameter.
+
+Originally it was created to hide the CRUD controller FQCN in the admin URLs,
+but the inconvenience of having to retrieve the CRUD ID for a given CRUD FQCN
+complicates things too much.
+
+Starting from EasyAdmin 3.2.0, admin URLs no longer include the `crudId`
+parameter. This needed changes are done transparently for you, but if you
+want to fix deprecation messages, do the following changes.
+
+**In templates**:
+
+```twig
+{# BEFORE #}
+<a href="{{ ea_url().setCrudId('...') }}"> ... </a>
+
+{# AFTER #}
+<a href="{{ ea_url().setController('App\\Controller\\Admin\\SomeCrudController') }}"> ... </a>
+```
+
+**In services and controllers**:
 
 ```php
-// Before
-protected function prepareEditEntityForPersist($entity) { ... }
+namespace App\Controller;
 
-// After
-protected function preUpdateEntity($entity) { ... }
+use App\Controller\Admin\UserCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-// You can also create custom methods for each entity
-protected function preUpdateUserEntity($entity) { ... }
-protected function preUpdateProductEntity($entity) { ... }
-// ...
+class SomeController extends AbstractController
+{
+    private $adminUrlGenerator;
+
+    public function __construct(AdminUrlGenerator $adminUrlGenerator)
+    {
+        $this->adminUrlGenerator = $adminUrlGenerator;
+    }
+
+    public function someAction()
+    {
+        // BEFORE
+        $crudId = $this->crudControllerRegistry->findCrudIdByCrudFqcn(UserCrudController::class);
+        $url = $this->adminUrlGenerator
+            ->setCrudId($crudId)
+            ->setAction('edit')
+            ->setEntityId($this->getUser()->getId())
+            ->generateUrl();
+
+        // AFTER
+        $url = $this->adminUrlGenerator
+            ->setController(UserCrudController::class)
+            ->setAction('edit')
+            ->setEntityId($this->getUser()->getId())
+            ->generateUrl();
+    }
+}
 ```
 
-### New strategy to determine the entity name
+### Deprecated `eaContext` query parameter
 
-The strategy used to determine the entity name has change in preparation for
-some planned features.
+The admin URL generation has been updated. The old way of generating URLs still
+works, but it's deprecated. This only affects you if:
 
-Previously, the entity name was infered from the entity class name. Now the
-entity name is the value used as the YAML key of the configuration file:
+  * You generate URLs to EasyAdmin pages from outside EasyAdmin (e.g. in a normal
+    Symfony controller, generate a link to "show the backend of Product entity = 3")
+  * Your backend integrates normal Symfony actions (e.g. to embed some Symfony
+    controller inside an EasyAdmin backend);
 
-```yaml
-# Before (label = name = TestEntity)
-easy_admin:
-    entities:
-        MyEntity: 'AppBundle\Entity\TestEntity'
+#### Generating links to EasyAdmin pages
 
-# After (label = name = MyEntity)
-easy_admin:
-    entities:
-        MyEntity: 'AppBundle\Entity\TestEntity'
+If you generate URLs in Twig templates using the ``ea_url()`` function, you
+don't have to make any changes. However, if you generate URLs in services or
+controllers, you need to update your code.
+
+**BEFORE** you used the ``CrudUrlGenerator`` service and called the ``build()``
+method to start building the URL:
+
+```php
+namespace App\Controller;
+
+use App\Controller\Admin\UserCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Router\CrudUrlGenerator;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+class SomeController extends AbstractController
+{
+    private $crudUrlGenerator;
+
+    public function __construct(CrudUrlGenerator $crudUrlGenerator)
+    {
+        $this->crudUrlGenerator = $crudUrlGenerator;
+    }
+
+    public function someAction()
+    {
+        $url = $this->crudUrlGenerator
+            ->build()
+            ->setController(UserCrudController::class)
+            ->setAction('edit')
+            ->setEntityId($this->getUser()->getId())
+            ->generateUrl();
+    }
+}
 ```
 
-This change probably doesn't affect your backend, because so far the entity
-name is mostly an internal thing used as part as the URL of the backend pages.
-In the next version of the bundle this value will be used as some PHP method
-name. Therefore, developer must have absolute control over the entity name and
-EasyAdmin should not autogenerate it.
+**AFTER** you must use the ``AdminUrlGenerator`` service and the ``build()``
+method no longer exists:
 
-### Entity names no longer can include unsafe characters
+```php
+namespace App\Controller;
 
-Previously, the YAML key of the configuration file was used to set the entity
-label for the entities which didn't define the `label` option. This label is
-used in some buttons, the main menu and the page title. Therefore, you could
-use any character for the entity name, including white spaces.
+use App\Controller\Admin\UserCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-Now entity names can only contain numbers, characters and underscores, and the
-first character cannot be a number. This allows to use the entity name as part
-of the name of some PHP methods. In order to use a fancy entity label, just
-define the `label` option:
+class SomeController extends AbstractController
+{
+    private $adminUrlGenerator;
 
-```yaml
-# BEFORE
-# this will throw an exception in the new bundle version
-easy_admin:
-    entities:
-        'My Fancy Entity!': 'AppBundle\Entity\TestEntity'
+    public function __construct(AdminUrlGenerator $adminUrlGenerator)
+    {
+        $this->adminUrlGenerator = $adminUrlGenerator;
+    }
 
-# AFTER
-easy_admin:
-    entities:
-        MyEntity:
-            class: 'AppBundle\Entity\TestEntity'
-            label: 'My Fancy Entity!'
+    public function someAction()
+    {
+        $url = $this->adminUrlGenerator
+            ->setController(UserCrudController::class)
+            ->setAction('edit')
+            ->setEntityId($this->getUser()->getId())
+            ->generateUrl();
+    }
+}
 ```
 
-### Changed variables names in twig views
+#### Integrating Symfony routes/controllers in EasyAdmin backends
 
-The former `_entity` variable was used to retrieve the current entity configuration.
-This variable has been renamed to `_entity_config` for convenience and readability reasons.
+EasyAdmin allows you to integrate normal Symfony controllers/actions in your
+backends. This allows to add a menu item pointing to a Symfony route and when
+clicking on it, you see the result of the controller/action inside the backend
+(with the same menu and layout as the other EasyAdmin requests).
 
-The old `item` variable was used to carry the currently created/edited entity.
-This variable has been renamed to `entity` for better understandability.
+Before EasyAdmin 3.2.0, these links to Symfony routes added a query parameter
+called ``eaContext`` with the ID of the Dashboard to use when serving the request.
+This ``eaContext`` was needed to identify the Dashboard to use when rendering the
+Symfony controller response.
 
-Be sure that you did not override these variables, if so, you just have to change the name.
+Although the ``eaContext`` was added automatically by EasyAdmin to the links of
+the menu items, you had to be careful and keep that query parameter in all the
+URLs generated by yourself. Otherwise, you saw an exception message saying
+"Variable "ea" does not exist." (because ``eaContext`` was lost and EasyAdmin
+no longer can associate your request to a backend).
 
-Upgrade to 1.4.0 (1/May/2015)
------------------------------
+Starting from EasyAdmin 3.2.0, you don't have to deal with this ``eaContext``
+query parameter because it no longer exists. However, that requires you to change
+how you generate the links to Symfony routes.
 
-These changes affect you only if you have customized any of the following
-templates in your backend:
+For example, in a template:
 
-1) `form/entity_form.html.twig` template has been renamed to `form.html.twig`
-2) `_list_paginator.html.twig` template has been renamed to `_paginator.html.twig`
-3) `_flashes.html.twig` template has been removed because it wasn't used in any other template
+```twig
+{# BEFORE #}
+{# you use the normal path() Twig function, but you have to add the eaContext
+   query param that is passed to the template from the controller #}
+<a href="{{ path('my_symfony_route', { id: item.id, eaContext: ea_context }) }}"> ... </a>
 
-Full version details: https://github.com/javiereguiluz/EasyAdminBundle/releases/tag/v1.4.0
+{# another common solution was to just merge all query params, which included eaConext #}
+<a href="{{ path('my_symfony_route', app.request.query.all|merge({ id: item.id })) }}"> ... </a>
+
+{# AFTER #}
+{# you no longer need to care about eaContext, but you can't generate URLs with
+   Twig's path() function. Instead, you must use EasyAdmin ea_url() function #}
+<a href="{{ ea_url().setRoute('my_symfony_route', { id: item.id }) }}"> ... </a>
+```
+
+In controllers, you must do the same change: remove the ``eaContext`` parameter
+and generate routes using EasyAdmin's URL generator instead of Symfony's URL
+generator.
+
+**BEFORE**
+
+```php
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+
+class SomeController extends AbstractController
+{
+    public function someAction(Request $request)
+    {
+        // ...
+
+        return $this->redirectToRoute('my_symfony_route', [
+            'id' => $this->getUser()->getId(),
+            // you had to keep this parameter in all your URLs
+            'eaContext' => $request->query->get('eaContext'),
+        ]);
+
+        $this->render('some_template.html.twig', [
+            '...' => '...',
+            // you had to keep this parameter in all your templates
+            'eaContext' => $request->query->get('eaContext'),
+        ]);
+    }
+}
+```
+
+**AFTER**
+
+```php
+namespace App\Controller;
+
+use App\Controller\Admin\UserCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+class SomeController extends AbstractController
+{
+    private $adminUrlGenerator;
+
+    public function __construct(AdminUrlGenerator $adminUrlGenerator)
+    {
+        $this->adminUrlGenerator = $adminUrlGenerator;
+    }
+
+    public function someAction(Request $request)
+    {
+        // ...
+
+        return $this->redirect($this->adminUrlGenerator->setRoute('my_symfony_route', [
+            'id' => $this->getUser()->getId(),
+        ]->generateUrl());
+
+        $this->render('some_template.html.twig', [
+            '...' => '...',
+        ]);
+    }
+}
+```
+
+EasyAdmin 3.1.0
+---------------
+
+* `CrudControllerInterface` added two new methods: `createEditFormBuilder()` and
+  `createNewFormBuilder()` (and they were implemented in `AbstractCrudController`)

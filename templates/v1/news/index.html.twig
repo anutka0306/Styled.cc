@@ -7,7 +7,7 @@
             {% for item in items %}
                 <div class="row">
                     <div><span>{{ item.date|date("d.m.Y") }}</span> <a href="{{ path('news_item',{'id': item.id}) }}">{{ item.name }}</a></div>
-                    <div>{{ item.shortText|easyadmin_truncate(290) }}</div>
+                    <div>{{ item.shortText }}</div>
                 </div>
                 <hr />
             {% endfor %}

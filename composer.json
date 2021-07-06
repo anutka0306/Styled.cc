@@ -6,7 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-json": "*",
-        "easycorp/easyadmin-bundle": "^2.3",
+        "easycorp/easyadmin-bundle": "^3",
         "friendsofsymfony/ckeditor-bundle": "^2.2",
         "google/recaptcha": "^1.2",
         "impulze/intervention-image-bundle": "^1.2",

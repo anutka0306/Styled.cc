@@ -23,10 +23,10 @@
                     </div>
                     <div class="uk-flex-first@l">
                         <div class="services-example__box">
-                            <div class="services-example__box-title">{{ item.name|easyadmin_truncate(55) }}</div>
+                            <div class="services-example__box-title">{{ item.name }}</div>
                             <p>Выполненные работы:</p>
                             <div class="services-example__box-list">
-                                {{ item.shortText|easyadmin_truncate(190) }}
+                                {{ item.shortText }}
                             </div>
                             {% if item.sum > 0 %}
                                 <p class="accent">В стоимость включены материалы и работа</p>

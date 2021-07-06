@@ -21,7 +21,7 @@
                         <i class="review_item__ocenka">{{ stars(item.ocenka) }}</i>
                     </div>
                     <div class="review_item__text">
-                        {{ item.text|easyadmin_truncate(100) }}
+                        {{ item.text }}
                     </div>
                     <div class="link_go_full_faq">
                         <a href="{{ path('reviews_item',{'id': item.id}) }}">Читать полностью</a>

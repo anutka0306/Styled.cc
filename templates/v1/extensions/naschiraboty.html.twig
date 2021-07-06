@@ -3,7 +3,7 @@
         <div class="row row--job" data-job-id="{{ loop.index }}">
             <div class="job_col col-12 col-lg-6">
                 <div class="job_pad">
-                    <h3 class="job_title">{{ item.name|easyadmin_truncate(55) }}</h3>
+                    <h3 class="job_title">{{ item.name }}</h3>
                     <p class="job_text"></p>
                     <div class="job_dedline"></div>
                     <p>{{ item.shortText|easyadmin_truncate(190) }}</p>

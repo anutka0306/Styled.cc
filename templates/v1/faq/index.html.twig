@@ -9,7 +9,7 @@
                     <div class="faq-item__header">
                         <a href="{{ path('faq_item',{'id': item.id}) }}">{{ item.name }}</a>
                     </div>
-                    <div class="faq-item__text">{{ item.text|easyadmin_truncate(290) }}</div>
+                    <div class="faq-item__text">{{ item.text }}</div>
                     <div class="faq-item__go_full">
                         <a href="{{ path('faq_item',{'id': item.id}) }}">Читать полностью</a>
                     </div>
