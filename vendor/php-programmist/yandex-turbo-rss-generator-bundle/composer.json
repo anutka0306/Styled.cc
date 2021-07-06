@@ -1,0 +1,37 @@
+{
+    "name": "php-programmist/yandex-turbo-rss-generator-bundle",
+    "description": "Bundle for Sumfony 4-5 for generation RSS feed for Yandex Turbo pages.",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "PHP-Programmist.ru",
+            "email": "php.programmist.ru@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2.5",
+        "symfony/filesystem": "^4.4 || ^5.0",
+        "symfony/dependency-injection": "^4.4 || ^5.0",
+        "symfony/config": "^4.4 || ^5.0",
+        "symfony/http-kernel": "^4.4 || ^5.0",
+        "symfony/yaml": "^4.4 || ^5.0",
+        "doctrine/dbal": "^2.10",
+        "symfony/twig-bundle": "^4.4 || ^5.0"
+    },
+    "require-dev": {
+        "symfony/phpunit-bridge": "^4.4 || ^5.0",
+        "symfony/framework-bundle": "^4.4 || ^5.0",
+        "squizlabs/php_codesniffer": "^3.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "PhpProgrammist\\YandexTurboRssGeneratorBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PhpProgrammist\\YandexTurboRssGeneratorBundle\\Tests\\": "tests/"
+        }
+    }
+}
