@@ -1,0 +1,19 @@
+@import "~swiper/css/swiper.css";
+@import "../global/_media-queries.scss";
+.swiper-container {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin: 0 auto;
+  @include respond-below(xs){
+    padding-top: 10px;
+  }
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 350px;
+  height: 350px;
+  border-radius: 20px;
+}

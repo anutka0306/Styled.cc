@@ -1,0 +1,33 @@
+.clearfix:after {
+    display: table;
+    content: '';
+    clear: both;
+}
+h2 {
+    font-family: "Roboto";
+    font-size: 43px;
+    font-weight: bold;
+    margin: 25px 0 15px;
+    text-transform: uppercase;
+    @include respond-below(xs){
+        font-size: 24px;
+    }
+}
+p {
+    font-family: "Roboto";
+    font-size: 16px;
+}
+div.clr {
+    width: 100%;
+    clear: both;
+}
+@media (min-width: 577px) {
+    .mobile_show {
+        display: none !important;
+    }
+}
+@media screen and (max-width: 576px) {
+    .mobile_hide {
+        display: none !important;
+    }
+}

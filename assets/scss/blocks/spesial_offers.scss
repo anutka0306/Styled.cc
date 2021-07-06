@@ -1,0 +1,70 @@
+@import "~slick-carousel/slick/slick.scss";
+@import "../libs/custom_slick";
+.special_offers{
+  margin: 2em auto;
+  .card-wrap * {
+    outline: none !important;
+  }
+
+}
+.special_offers__card-block{
+  .card {
+    padding: 25px 40px;
+    color: #000000;
+    min-height: 290px;
+    margin-left: 20px;
+    margin-right: 20px;
+    justify-content: space-between;
+    .cena-wrap {
+      position: relative;
+      width: 100%;
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .mbtn {
+      display: inline-block;
+      padding-left: 10px;
+      padding-right: 10px;
+      height: 35px;
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+    }
+    .stcena {
+      display: block;
+      padding: 0 5px;
+      font-family: 'Roboto', 'Arial', sans-serif;
+      position: relative;
+      &::before {
+        width: 75px;
+        height: 1px;
+        content: '';
+        position: absolute;
+        top: 12px;
+        left: 0;
+        background-color: #ccc;
+      }
+    }
+    .newcena {
+      color: $green;
+      font-family: 'Roboto', 'Arial', sans-serif;
+      font-size: 24px;
+      line-height: 1;
+    }
+  }
+  .card-zag {
+    font-size: 20px;
+    padding-bottom: 15px;
+  }
+  .card-description{
+    font-size: 18px;
+  }
+}
+.offer-image{
+  height: 320px;
+  max-width: 100%;
+  object-fit: cover;
+}

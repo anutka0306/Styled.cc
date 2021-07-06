@@ -1,0 +1,72 @@
+// 100 Extra Light or Ultra Light;
+// 200 Light or Thin;
+// 300 Book or Demi;
+// 400 Regular or Normal;
+// 500 Medium;
+// 600 Semibold or Demibold;
+// 700 Bold;
+// 800 Black or Extra Bold or Heavy;
+// 900 Extra Black or Fat or Ultra Black
+
++font("Montserrat" , "Montserrat-ExtraLight", 100, normal)
++font("Montserrat" , "Montserrat-Thin"      , 200, normal)
++font("Montserrat" , "Montserrat-Light"     , 300, normal)
++font("Montserrat" , "Montserrat-Italic"    , 400, italic)
++font("Montserrat" , "Montserrat-Regular"   , 400, normal)
++font("Montserrat" , "Montserrat-Medium"    , 500, normal)
++font("Montserrat" , "Montserrat-SemiBold"  , 600, normal)
++font("Montserrat" , "Montserrat-Bold"      , 700, normal)
++font("Montserrat" , "Montserrat-ExtraBold" , 800, normal)
++font("Montserrat" , "Montserrat-Black"     , 900, normal)
+
+
++font("LabGrotesque" , "LabGrotesque-Regular", 400, normal)
++font("LabGrotesque" , "LabGrotesque-Bold"   , 700, normal)
++font("LabGrotesque" , "LabGrotesque-Black"  , 900, normal)
+
+
+html,
+body
+  font-family: Montserrat
+  font-size: 16px
+  +fz(16, 13)
+  line-height: 1.27
+  color: #000000
+  font-weight: 400
+
+.uk-h1, .uk-h2, .uk-h3, .uk-h4, .uk-h5, .uk-h6, .uk-heading-2xlarge, .uk-heading-large, .uk-heading-medium, .uk-heading-small, .uk-heading-xlarge, h1, h2, h3, h4, h5, h6
+  font-family: Montserrat
+  font-weight: 700
+
+.section-title
+  display: flex
+  color: $blue
+  font-size: 50px
+  +fz(50, 25)
+  line-height: 1
+  font-weight: 600
+  text-transform: uppercase
+  margin: 0
+  position: absolute
+  top: 0
+  left: -75px
+  writing-mode: vertical-lr
+  white-space: nowrap
+  span
+    transform: rotate(180deg)
+    +r(1356)
+      transform: rotate(0)
+
+  +r(1439)
+    left: -50px
+  +r(1356)
+    position: static
+    writing-mode: horizontal-tb
+    top: auto
+    left: auto
+    margin-bottom: 40px
+
+
+.uk-background-secondary
+  .section-title
+    color: $accent

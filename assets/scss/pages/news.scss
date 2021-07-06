@@ -1,0 +1,11 @@
+.news_image{
+  max-width: 50%;
+  float:left;
+  margin: 5px 15px 15px 5px;
+  border-radius: 5px;
+  @media screen and (max-width: 576px) {
+      max-width: 100%;
+      float: none;
+  }
+}
+

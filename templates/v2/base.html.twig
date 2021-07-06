@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}{{ page.metaTitle ?? (page.h1~' - кузовной центр Детейлингофъ') }}{% endblock %}</title>
+        <meta name="author">
+        <meta name="description" content="{% block description %}{{ page.metaDescription|raw }}{% endblock %}"/>
+        <meta name="keywords" content="{% block keywords %}{% endblock %}"/>
+        <meta http-equiv="Last-Modified" content="{{ page.modifyDate|date('D, d M Y H:i:s') }} GMT">
+        <link rel="canonical" href="{{ app.request.schemeAndHttpHost~page.path }}"/>
+
+        <meta property="og:title" content="{{ block('title') }}"/>
+        <meta property="og:keywords" content="{{ block('keywords') }}"/>
+        <meta property="og:description" content="{{ block('description') }}"/>
+        <meta property="og:url" content="{{ app.request.schemeAndHttpHost~page.path }}"/>
+        <meta property="og:image" content="{{ app.request.schemeAndHttpHost }}/img/og-logo.png"/>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="format-detection" content="telephone=no">
+        <meta content="IE=edge" http-equiv="X-UA-Compatible">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        
+        <link rel="preload" href="https://fuelfuture.ru/assets/fonts/Montserrat-SemiBold.woff" as="font" type="font/woff" crossorigin>
+        <link rel="preload" href="https://fuelfuture.ru/assets/fonts/Montserrat-Bold.woff" as="font" type="font/woff" crossorigin>
+        <link rel="preload" href="https://fuelfuture.ru/assets/fonts/LabGrotesque-Black.woff" as="font" type="font/woff" crossorigin>
+        <link rel="preload" href="https://fuelfuture.ru/assets/fonts/Montserrat-Medium.woff" as="font" type="font/woff" crossorigin>
+        <link rel="preload" href="https://fuelfuture.ru/assets/fonts/Montserrat-Black.woff" as="font" type="font/woff" crossorigin>
+        <link rel="preload" href="https://fuelfuture.ru/assets/fonts/Montserrat-Regular.woff" as="font" type="font/woff" crossorigin>
+        <link rel="preload" href="https://fuelfuture.ru/assets/fonts/LabGrotesque-Bold.woff" as="font" type="font/woff" crossorigin>
+        <link rel="preload" href="https://fuelfuture.ru/assets/fonts/LabGrotesque-Regular.woff" as="font" type="font/woff" crossorigin>
+        <link rel="preload" href="https://fuelfuture.ru/assets/fonts/Montserrat-Light.woff" as="font" type="font/woff" crossorigin>
+
+        <meta property="schema:name" content="{{ block('title') }}"/>
+        <meta property="schema:description" content="{{ block('description') }}"/>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app2') }}
+        {% endblock %}
+        <meta name="yandex-verification" content="5440d1539bdcce3d"/>
+        {{ include('v2/scripts/_schema.html.twig') }}
+        {{ schema_breadcrumbs(page ?? null) }}
+        {{ include('v2/scripts/_comagic.html.twig') }}
+        {{ include('v2/scripts/_google_analitics.html.twig') }}
+    </head>
+
+    <body itemscope="itemscope" itemtype="https://schema.org/Product">
+    {{ include('v2/scripts/_yandex_metrics.html.twig') }}
+    {{ include('v2/scripts/_liveinternet.html.twig') }}
+    <div class="page-wrapper">
+        {{ include('v2/blocks/include/header.html.twig') }}
+        <main class="page-main">
+            {{ include('v2/blocks/section/hero.html.twig',{ h1 : block('h1') ?? page.h1 }) }}
+            {% block breadcrumbs %}
+                {{ breadcrumbs(page ?? null) }}
+            {% endblock %}
+            <div id="content">
+                {% block body %}{% endblock %}
+            </div>
+
+            {% block extraModules %}
+                {{ whatsapp_block(page ?? null) }}
+                {{ include('v2/blocks/section/about.html.twig') }}
+                {{ before_after(page ?? null) }}
+                {{ our_works_slider(page) }}
+                {{ include('v2/blocks/section/reviews.html.twig') }}
+            {% endblock %}
+
+            {{ render_map(page) }}
+        </main>
+        {{ include('v2/blocks/include/footer.html.twig') }}
+        {{ include('v2/blocks/section/callback-popup.html.twig') }}
+        {{ include('v2/blocks/section/youtube-popup.html.twig') }}
+        {{ include('v2/blocks/section/mango.html.twig') }}
+    </div>
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app2') }}
+    {% endblock %}
+    </body>
+</html>

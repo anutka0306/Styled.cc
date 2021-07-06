@@ -1,0 +1,255 @@
+body{
+	margin: 0px;
+	font-family: Arial, sans-serif;
+	font-size:12px;
+	line-height:1.3em;
+}
+
+.body-wrapper{
+	width: 990px;
+	height:2000px;
+	left: 50%; /* Отступ в процентах от левого края окна */
+	position: absolute; /* Абсолютное позиционирование блока */
+	margin-left: -495px; /* Отрицательный отступ от левого края страницы, должен равняться половине высоты блока со знаком минус */
+	display: block;
+}
+.body-wrapper h1 {
+text-align: center;
+font: 22px PFDinTextCompProMedium;
+color: #000;
+margin-bottom: 5px;
+}
+.container {
+	
+	margin-left: 25px;/*30*/
+	margin-top:155px;/*138*/
+	display:block;
+	width: 990px;
+	height: 738px;
+	background: url(../images/back.jpg) no-repeat left;
+	background-position:-23px 95px;
+	
+
+}
+.storona {
+	width:77px;
+	float:left;
+	margin-left:15px;
+}
+.remont {
+	/*width: 190px;*/
+	float: left;
+	margin-left: 15px;
+	height: 130px;
+}
+.name_d {
+	display:block;
+	margin-left:15px;
+	height:100px;
+}
+.image_b {
+	float:right;
+	display:inline-block;
+}
+
+.works {
+	width: 240px;
+	height: 348px;
+	overflow:hidden;
+}
+hr#a {
+border: 0;
+height: 0;
+border-top: 1px solid rgba(0, 0, 0, 0.1);
+border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+.clear {
+	height:30px;
+}
+.sert p{
+	font-size:10px;
+	margin-bottom:10px;
+}
+
+/*-------------------------FORM-------------------------*/
+.submit {
+	text-align:center;
+	margin-left:50px;
+	margin-top:20px;
+}
+.button {
+	text-align:center;
+	margin-left:50px;
+	margin-top:20px;
+}
+input[type="radio"] + label {
+
+	font-size:12px;
+  cursor: pointer;
+  margin-top:40px;
+}
+
+input[type="radio"]:disabled + label {
+	color: #D3D3D3;
+}
+
+input[type="radio"] + label.point {
+
+	font-size:12px;
+	margin-top:5px;
+	height:20px;
+}
+input[type="radio"] {
+	margin-top:4px;
+}
+	
+
+input[type="radio"] + label::before {
+
+    display: inline-block;
+    margin: 0 11px -2px 5px;
+    
+}
+input[type="text"],
+	input[type="password"],
+	input[type="email"],
+	textarea {
+	border: 1px solid #A5A5A5;
+	padding: 6px 4px;
+	outline: none;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	color: #000;
+	margin: 0;
+	width: 210px;
+	max-width: 100%;
+	display: block;
+	margin-bottom: 20px;
+	background: #fff;
+}
+.contact-form p{
+	margin-bottom:5px;
+}
+.input_wrapper {
+	display:inline-block;
+	margin-right:20px;
+}
+
+/*--------------------TABLE-----------------------*/
+table {
+	border-collapse: collapse;
+	border-spacing: 1px 1px;
+	border-color: #A5A5A5; 
+	border-bottom-width: 1px; 
+	border-bottom-style: solid; 
+	color: #7e7e7e;
+	border: 1px solid #ccc;
+	vertical-align: central;
+	z-index:9999;
+	margin-top:30px;
+}
+th {
+	background:#808080;
+	height:32px;
+	font-size:12px;
+	font-weight:bold;
+	color:#FFFFFF;
+}
+tr {
+	font-size:12px;
+	font-weight:normal;
+	color:#000;
+	height:32px;
+}
+td {
+	padding-left:8px;
+	padding-right:8px;
+}
+tr.even {
+	background:#E6E6E6;
+}
+.del{
+	width:21px;
+	height:21px;
+	margin-top:8px;
+	background-repeat: no-repeat;
+	background-position: right center;
+	background-image: url(../images/del_active.png);
+	float: right;
+	display: table-cell;
+	z-index: 10000;
+	background-clip: padding-box;
+	text-decoration:none;
+     margin-top: 5px;
+    margin-bottom: 5px
+}
+.del:hover{
+	background-image: url("../images/del.png"/*tpa=/wp-content/themes/krasandko/images/del.png*/);
+}
+.del:active{
+	background-image: url("../images/del_active.png"/*tpa=/wp-content/themes/krasandko/images/del_active.png*/);
+}
+.itogo {
+	margin-top:10px;
+	font-size:20px;
+	font-weight:bold;
+	color:#000;
+	float:right;
+}
+.itogo p{
+	text-align:right;
+}
+.itog {
+	width:204px;
+	float:right;
+}
+.itog p{
+	margin-top:30px;
+	font-size:20px;
+	font-weight:bold;
+	color:#0000B7;
+	padding-left:8px;
+   ;
+}
+
+/*---------------------COLUMNS----------------------*/
+.ul_block {
+padding-bottom:20px; /*отступ снизу*/
+width:100%; /*указываем общую ширину блока с колонками*/
+float:left; /*что бы блок охватывал свое содержимое*/
+margin-left:40px;
+}
+.ul_block ul {
+padding:0 25px 0 0; /*отступ между колонками*/
+width:115px; /*ширина колонок*/
+float:left; /*выстраиваем колонки друг за другом*/
+list-style:none;
+}
+.ul_block li {
+line-height:1.3em; /*расстояние между пунктами*/
+text-align:left;
+}
+
+tr:nth-child(even) {
+    background-color: #fff;
+}
+tr:nth-child(odd) {
+    background-color: #eee;
+}
+td > a { 
+	color:#333; 
+	text-decoration:none;
+}
+td 
+{
+	height:22px;
+}
+#footerbottom{
+	margin-top: 200px;
+}
+#good_sent_message{
+    font-size: 20px;
+    font-weight:bold;
+	color:#ff0000;
+}

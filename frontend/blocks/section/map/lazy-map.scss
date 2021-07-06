@@ -1,0 +1,263 @@
+#mapp {
+    width: 100%;
+    height: 800px;
+}
+
+.map-baloon {
+    display: block;
+    position: relative;
+    width: 270px;
+    height: 280px;
+    padding: 30px 20px;
+    background: white;
+}
+
+.map-baloon .close {
+    position: absolute;
+    right: 8px;
+    color: black;
+    font-size: 28px;
+    display: block;
+    top: 0;
+}
+
+.map-baloon .close:hover {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.map-info {
+    width: 100%;
+    height: 100%;
+}
+
+.map-info__title {
+    background-color: #f1f1f1;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: "Proxima Nova Bold";
+}
+
+.map-info__phone {
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #9b9b9b;
+    margin-top: 5px;
+}
+
+.map-info__phone-number a {
+    color: black;
+}
+
+.map-info__adress {
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #9b9b9b;
+    margin-top: 5px;
+}
+
+.map-info__adress-info {
+    margin-bottom: 10px;
+}
+
+.map-info__btn {
+    margin-bottom: 10px;
+    display: block;
+    width: 100%;
+    line-height: 30px;
+    padding: 10px 0;
+    background-color: #007cc3;
+    text-decoration: none;
+    color: #fff !important;
+    font-size: 15px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+    position: relative;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    -webkit-box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.55);
+    box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.55);
+}
+
+.map-info__btn:hover {
+    background-color: #005585;
+}
+
+.map-info__btn:focus .map-info__btn__content, .map-info__btn:hover .map-info__btn__content {
+    display: block;
+    opacity: 1;
+    -webkit-animation: showContent .3s ease-in;
+    animation: showContent .3s ease-in;
+}
+
+.map-info__btn__content {
+    display: none;
+    padding: 3px 0;
+    opacity: 0;
+    position: absolute;
+    width: 200px;
+    max-width: calc(100% - 2px);
+    top: calc(-100% - 35px);
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    background: white;
+    -webkit-box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.65);
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.65);
+    -webkit-transition: opacity .3s ease;
+    transition: opacity .3s ease;
+}
+
+.map-info__btn__content a {
+    text-align: center;
+    display: block;
+    margin-bottom: 3px;
+    color: black;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.map-info__btn__content a:last-child {
+    margin-bottom: 0;
+}
+
+.map-info__btn__content a::after {
+    display: inline-block;
+    content: '';
+    margin-left: 10px;
+    background: url(/img/arrow-right.png) no-repeat center;
+    background-size: contain;
+    width: 20px;
+    height: 13px;
+    vertical-align: baseline;
+}
+
+.map-info__btn__content a:hover {
+    text-decoration: none;
+    color: #007cc3;
+}
+
+.ymaps-layers-pane {
+    -ms-filter: grayscale(1);
+    -webkit-filter: grayscale(1);
+    -moz-filter: grayscale(1);
+    -o-filter: grayscale(1);
+    filter: grayscale(1);
+}
+
+.ymap-container {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center center;
+    box-shadow: 0 0 2em 0 rgba(0, 0, 0, .2);
+}
+
+#map-yandex {
+    position: relative;
+    z-index: 7;
+    width: 100%;
+    height: 800px;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+/*Индикатор загрузки, который показывается до загрузки карты*/
+.loader {
+    position: absolute;
+    z-index: 150;
+    top: -100%;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    color: #000000;
+    transition: opacity .7s ease;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, .55);
+}
+
+.loader:after,
+.loader:before {
+    box-sizing: border-box;
+}
+
+.loader.is-active {
+    top: 0;
+    opacity: 1;
+}
+
+.loader-default:after {
+    position: absolute;
+    top: calc(50% - 24px);
+    left: calc(50% - 24px);
+    width: 48px;
+    height: 48px;
+    content: '';
+    -webkit-animation: rotation 1s linear infinite;
+    animation: rotation 1s linear infinite;
+    border: solid 8px #ffffff;
+    border-left-color: transparent;
+    border-radius: 50%;
+}
+
+@-webkit-keyframes rotation {
+    from {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+    to {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+@keyframes rotation {
+    from {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+    to {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+@-webkit-keyframes blink {
+    from {
+        opacity: .5;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes blink {
+    from {
+        opacity: .5;
+    }
+    to {
+        opacity: 1;
+    }
+}

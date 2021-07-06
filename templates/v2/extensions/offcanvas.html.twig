@@ -1,0 +1,42 @@
+<div id="mobile-menu" data-uk-offcanvas="mode: reveal">
+    <div class="uk-offcanvas-bar"><button class="uk-offcanvas-close" type="button" data-uk-close=""></button>
+        <div class="uk-margin-remove-top">
+            <div class="logo"><img class="logo__img" src="/assets/images/logo.png" alt="DETAILINGOF" /></div>
+        </div>
+        <div class="uk-margin">
+            <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav="multiple: true">
+                <li class="uk-parent"><a href="{{ path('uslugi') }}">Услуги</a>
+                    <ul class="uk-nav-sub">
+                        {% for item in items %}
+                        {# @var item \App\Dto\ServiceMenuItemDto #}
+                        <li class="uk-parent">
+                            <a href="#">{{ item.name }}</a>
+                            <ul class="uk-nav-sub">
+                                {% for service in item.items %}
+                                    {# @var service \App\Entity\RootService #}
+                                    <li><a href="{{ service.path }}">{{ service.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {{ include('v2/blocks/include/main_menu_items.html.twig') }}
+            </ul>
+        </div>
+        <div class="uk-margin">
+            {% for salon in salons(page ?? null) %}
+                {# @var salon \App\Entity\Salon #}
+                <div class="contact-item">
+                    <a class="phone-link mgo-number-{{ salon.mangoId }}" href="tel:{{ salon.phoneDigits }}" onclick="yaCounter41408589.reachGoal ('{{ salon.yandexTarget }}');location.href='tel:{{ salon.phoneDigits }}'; return true;">
+                        {{ salon.phone }}
+                    </a>
+                    <a class="adress-link" href="{{ salon.googleMapLink }}" target="_blank">
+                        {{ salon.address }}
+                    </a>
+                </div>
+                <hr/>
+            {% endfor %}
+        </div>
+    </div>
+</div>

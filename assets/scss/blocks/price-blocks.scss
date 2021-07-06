@@ -1,0 +1,49 @@
+.service-price {
+    display: flex;
+    justify-content: space-around;
+    max-width: 100%;
+    background: #f0f0f0;
+    font-size: 14px;
+    @include respond-below(sm) {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .Box {
+        position: relative;
+        top: 0;
+        z-index: 2;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        background-color: #ffffff;
+        border: 2px solid #D4D4D4;
+        border-radius: 10px;
+        box-shadow: 0 0 15px #A9A9A9;
+        transition: 0.3s linear;
+        text-align: center;
+        font-size: 18px;
+        padding-bottom: 22px;
+
+        .kira-theme4__table1__icon {
+            margin-left: -15px;
+            padding-left: 15px;
+            margin-right: -15px;
+            padding-right: 15px;
+            padding-bottom: 10px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            background-color: #008d39;
+            font-size: 14px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .cena {
+            padding-top: 10px;
+        }
+    }
+}
+
+
+
+

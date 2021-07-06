@@ -1,0 +1,122 @@
+.callback_buttons {
+  margin-top: 30px;
+
+  .text-wrap {
+    border-left: 5px solid #007cc3;
+    padding-left: 10px;
+
+    .text1 {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 20px;
+
+      b {
+        color: gold;
+        font-size: 27px;
+      }
+    }
+
+    .text2 {
+      line-height: 1.2;
+
+      b {
+        color: #007cc3;
+        font-weight: bold;
+        padding-left: 5px;
+        font-size: 25px;
+      }
+    }
+  }
+}
+
+.scard-wrap {
+  margin-top: 30px;
+
+  .scard {
+    color: #101011;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    flex-flow: column nowrap;
+    padding: 0 0 0 40px;
+    box-shadow: rgba(0, 0, 0, 0.5) 2px 24px 25px -18px;
+    background: #f4f4f4 none repeat scroll 0% 0% / auto padding-box border-box;
+    min-height: 85px;
+    transition: all .5s;
+    position: relative;
+
+    &:hover {
+      box-shadow: 0 0 1px 5px rgba(0, 124, 195, 0.4), 0 0 1px 10px rgba(0, 0, 0, 0.1), 0 0 1px 15px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      transition: all .5s;
+    }
+
+    span {
+      color: #007cc3;
+      font-size: 14px;
+    }
+
+    div {
+      text-transform: uppercase;
+      font: 400 22px/22px 'Roboto', Arial, sans-serif;
+    }
+
+    &:before {
+      content: '';
+      width: 52px;
+      height: 45px;
+      position: absolute;
+      background: url(/img/fea-i3.png) center no-repeat;
+      background-size: cover;
+      right: 25px;
+      top: 23px;
+      transform: rotateY(0deg);
+      @media screen and (max-width: 768px) {
+          width: 52px;
+      }
+    }
+  }
+}
+@media (max-width: 991px) {
+  .callback_buttons .scard-wrap .scard {
+    padding: 0 0 0 15px;
+
+    div {
+      font-size: 17px;
+      line-height: 1;
+    }
+
+    &:before {
+      width: 30px;
+      height: 30px;
+      right: 15px;
+      top: 30px;
+    }
+  }
+}
+@media (max-width: 767px) {
+  .callback_buttons {
+    .text-wrap .text1 {
+      font-size: 18px;
+    }
+
+    .scard-wrap .scard {
+      padding: 0 0 0 30px;
+      margin-bottom: 15px;
+
+      div {
+        font-size: 20px;
+        line-height: 1;
+      }
+
+      &:before {
+        width: 40px;
+        height: 40px;
+        right: 25px;
+        top: 24px;
+      }
+    }
+  }
+}

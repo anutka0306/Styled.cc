@@ -1,0 +1,67 @@
+#php_flag display_errors on
+php_value memory_limit 1024M
+RewriteEngine On RewriteBase /
+
+Order Allow,Deny
+Allow from all
+Deny from 31.173.80.0/21 178.176.64.0/19
+
+RewriteCond %{HTTP:X-HTTPS} !1
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+#RewriteCond %{HTTPS} off
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+#RewriteCond %{HTTP_HOST} ^www\.(.*)$
+#RewriteRule ^(.*)$ http://%1/$1 [L,R=301]
+
+RewriteRule page_s/(.*)$ /$1 [R=301,L]
+RewriteRule skidki_i_akcii/(.*)$ /akcii/$1 [R=301,L]
+RewriteRule infiniti/polirovka/ /infiniti/polirovka-kuzova/ [R=301,L]
+RewriteRule infiniti/bamper_paint/ /infiniti/pokraska-bampera/ [R=301,L]
+RewriteRule infiniti/paint_kr/ /infiniti/pokraska-krila/ [R=301,L]
+RewriteRule porsche/lokalnyj-remont-kuzova/ /porsche/lokalnyy-remont-kuzova/ [R=301,L]
+RewriteRule nissan/paint_doors/ /nissan/pokraska-dveri/ [R=301,L]
+RewriteRule nissan/paint_bumper/ /nissan/pokraska-bampera/ [R=301,L]
+RewriteRule chevrolet/lokalnyj-remont-kuzova/ /chevrolet/lokalnyy-remont-kuzova/ [R=301,L]
+RewriteRule hyundai/lokalnyj-remont-kuzova/ /hyundai/lokalnyy-remont-kuzova/ [R=301,L]
+RewriteRule honda/khimchistka_salona/ /honda/himchistka-salona/ [R=301,L]
+RewriteRule honda/pokraska_kryla/ /honda/pokraska-kryla/ [R=301,L]
+RewriteRule honda/local_body/ /honda/lokalniy-remont-kuzova/ [R=301,L]
+RewriteRule infiniti/himchistka/ /infiniti/himchistka-salona/ [R=301,L]
+RewriteRule hyundai/himchistka/ /hyundai/himchistka-salona/ [R=301,L]
+RewriteRule ^calkuliator_zch/calculator/$ /calculator/ [R=301,L]
+RewriteRule (.*)/remont-i-udalenie-trecshin-na-avtostekle/$ /$1/remont-i-udalenie-treschin-na-avtostekle/ [R=301,L]
+RewriteRule (.*)/lokalniy-remont-kuzova/$ /$1/lokalnyy-remont-kuzova/ [R=301,L]
+RewriteRule (.*)/remont-i-zamena-krila/$ /$1/remont-i-zamena-kryla/ [R=301,L]
+RewriteRule (.*)/zacshita-kuzova-ot-carapin/$ /$1/zashchita-kuzova-ot-carapin/ [R=301,L]
+RewriteRule (.*)/okleyka-zacshitnoy-plenkoy/$ /$1/okleyka-zaschitnoy-plenkoy/ [R=301,L]
+RewriteRule (.*)/zacshita-kuzova-ot-skolov/$ /$1/zashchita-kuzova-ot-skolov/ [R=301,L]
+RewriteRule (.*)/remont-i-ustanovka-avtostekol/$ /$1/ustanovka-avtostekol/ [R=301,L]
+
+RewriteRule ^index.php/(.+)$ /$1 [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php
+
+<FilesMatch ".(flv|gif|jpg|jpeg|png|ico|swf|js|css|pdf)$">
+Header set Cache-Control "max-age=2592000"
+</FilesMatch>
+## EXPIRES HEADER CACHING ##
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/jpg "access 1 year"
+ExpiresByType image/jpeg "access 1 year"
+ExpiresByType image/gif "access 1 year"
+ExpiresByType image/png "access 1 year"
+ExpiresByType image/svg "access 1 year"
+ExpiresByType text/css "access 1 year"
+ExpiresByType application/pdf "access 1 month"
+ExpiresByType application/javascript "access 1 year"
+ExpiresByType application/x-javascript "access 1 year"
+ExpiresByType application/x-shockwave-flash "access 1 month"
+ExpiresByType image/x-icon "access 1 year"
+ExpiresDefault "access 2 days"
+</IfModule>
+## EXPIRES HEADER CACHING ##

@@ -1,0 +1,19 @@
+.rating_schema_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  @include respond-below(xs) {
+    display: none;
+  }
+}
+
+.rating-details {
+  color: #292929;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 4em;
+}
+
+.ratingValue {
+  font-weight: bold;
+}

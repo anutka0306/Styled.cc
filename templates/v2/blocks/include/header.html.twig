@@ -1,0 +1,33 @@
+<header class="page-header page-header--fixed">
+    <div class="page-header__top">
+        <div class="uk-container">
+            <div class="page-header__top-inner">
+                {% for salon in salons(page ?? null) %}
+
+                <div class="contact-item">
+                    <a class="phone-link mgo-number-{{ salon.mangoId }}" href="tel:{{ salon.phoneDigits }}" onclick="yaCounter41408589.reachGoal ('{{ salon.yandexTarget }}');location.href='tel:{{ salon.phoneDigits }}'; return true;">
+                        {{ salon.phone }}
+                    </a>
+
+                    <span>/</span>
+
+                    <a class="adress-link" href="#map-yandex">
+                        {{ salon.address }}
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="page-header__bottom">
+        <div class="uk-container">
+            <div class="page-header__bottom-inner">
+                <div class="logo"><a class="logo__link" href="/"><img class="logo__img" src="/assets/images/logo.png" alt="DETAILINGOF"/></a></div>
+                {{ main_menu(page) }}
+                <div class="contacts-block"><a class="phone-numb" href="tel:78007757961">+7 (800) 775-79-61</a><a
+                            class="callback-link js-popup-trigger" href="#">Запись на сервис</a></div>
+                <div class="btn-mobile-menu"><a href="#mobile-menu" data-uk-toggle="">☰</a></div>
+            </div>
+        </div>
+    </div>
+</header>

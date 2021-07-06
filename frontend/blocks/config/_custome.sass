@@ -1,0 +1,129 @@
+// Custome style
+
+body
+
+
+.page-wrapper
+	min-height: 100vh
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+
+	.page-main
+		flex-grow: 1
+
+body
+  min-height: 100vh
+  font-family: 'Montserrat', sans-serif
+
+.uk-background-secondary
+  background-color: black
+
+.uk-lightbox
+  background-color: rgba(#000, 0.85)
+
+.uk-button
+  height: 50px
+  line-height: 50px
+  box-sizing: border-box
+
+.uk-button-default
+  color: #ff5e1d
+  font-size: 14px
+  font-weight: 700
+  text-transform: uppercase
+
+  background-color: white
+  border: 2px solid white
+  +tr(0.3s)
+  +hh
+    background-color: $accent
+    border-color: $accent
+    color: #ffffff
+
+.uk-button-danger
+  background-color: $accent
+  border-color: $accent
+  color: #ffffff
+  +tr(0.3s)
+  +hh
+    color: #ff5e1d
+    background-color: white
+    border: 2px solid white
+
+
+.uk-section-large
+  padding-top: 120px
+  padding-bottom: 120px
+  +r(959)
+    padding-top: 70px
+    padding-bottom: 70px
+  +r(639)
+    padding-top: 40px
+    padding-bottom: 40px
+
+.uk-accordion
+
+  .uk-accordion-title
+    display: flex
+    align-items: center
+    background-color: white
+    color: black
+    font-size: 22px
+    +fz(22, 12)
+    line-height: 1
+    font-weight: 600
+    text-transform: uppercase
+    padding: 10px
+    +tr(0.3s)
+
+    &:before
+      margin-left: 0
+      margin-right: 20px
+      background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' data-svg='triangle-down'%3E%3Cpolygon points='5 7 15 7 10 12' fill='%23ff5e1d'%3E%3C/polygon%3E%3C/svg%3E")
+      +r(959)
+        margin-right: 10px
+
+  .uk-open>
+    .uk-accordion-title
+      background-color: $accent
+      &:before
+        background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' data-svg='triangle-down'%3E%3Cpolygon points='5 7 15 7 10 12' fill='%23000'%3E%3C/polygon%3E%3C/svg%3E")
+
+  .uk-accordion-content
+    padding: 0 60px
+    +r(959)
+      padding: 0
+
+.uk-accordion>:nth-child(n+2)
+  +r(639)
+    margin-top: 10px
+
+.uk-background-secondary
+  .uk-accordion-content
+    color: #ffffff
+
+.uk-panel-scrollable
+  border: 0
+  resize: none
+  max-height: 120px
+  padding-top: 0
+
+  &::-webkit-scrollbar
+    width: 5px
+
+  &::-webkit-scrollbar-thumb
+    background-color: $accent
+    outline: 1px solid slategrey
+
+.uk-dotnav>*>*
+  border: 1px solid rgba(#000000, 0.7)
+.uk-dotnav>.uk-active>*
+  background-color: $accent
+  border: 0
+
+.uk-background-secondary
+  .uk-dotnav>*>*
+    border: 1px solid #ffffff
+  .uk-dotnav>.uk-active>*
+    border: 0

@@ -1,0 +1,23 @@
+@import "../global/media-queries";
+.read-more-block{
+  transition: height .5s ease-out;
+  overflow: hidden;
+  margin: 2em auto;
+  @include respond-below(xs){
+    display: none;
+  }
+}
+.read-more-button-wrapper{
+  text-align: center;
+  @include respond-below(xs){
+    display: none;
+  }
+}
+.read-more-models{
+  transition: height .5s ease-out;
+  overflow: hidden;
+  margin: 2em auto;
+}
+.read-more-models-button-wrapper{
+  text-align: center;
+}

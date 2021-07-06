@@ -1,0 +1,106 @@
+/*whyus*/
+.whyus {
+    position:relative
+}
+.whyus .video {
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    overflow:hidden;
+    z-index:-1
+}
+.whyus .video video {
+    display:inline-block;
+    min-height:100%;
+    position:absolute;
+    top:50%;
+    min-width:100%;
+    width:auto;
+    height:auto;
+    left:50%;
+    -webkit-transform:translate(-50%, -50%);
+    -ms-transform:translate(-50%, -50%);
+    transform:translate(-50%, -50%)
+}
+.whyus .video .video-bg {
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    background:rgba(41,49,53,0.6)
+}
+.whyus__title {
+    color: white !important;
+    padding: 45px 0 65px;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-weight: bold!important;
+}
+.whyus__items {
+    display:-webkit-flex;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-flex-wrap:wrap;
+    -ms-flex-wrap:wrap;
+    flex-wrap:wrap;
+    -webkit-justify-content:space-between;
+    -ms-flex-pack:justify;
+    justify-content:space-between
+}
+.whyus__items__item {
+    max-width:315px;
+    border:1px solid #c6c6c6;
+    width:100%;
+    padding:75px 15px 40px 30px;
+    position:relative;
+    margin-bottom:120px
+}
+.whyus__items__item__icon {
+    position:absolute;
+    left:30px;
+    top:-40px
+}
+.whyus__items__item__icon .green-block {
+    width:110px;
+    height:85px
+}
+.whyus__items__item__text {
+    line-height:1.1;
+    color:white;
+    font-size:22px;
+    font-family:"Roboto";
+    text-align: left!important;
+}
+.whyus__items__item__text span {
+    font-weight:bold;
+}
+.whyus__items__item__text span.whyus__decrp {
+    font-size:17px;
+    font-family:"Proxima Nova Light";
+    font-weight:normal
+}
+.green-block {
+
+    width: 68px;
+    height: 60px;
+    text-align: center;
+    background: #77c938;
+    position: relative;
+
+}
+.green-block img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.whyus .container{
+    max-width: 1140px;
+}
+/*whyus.end*/

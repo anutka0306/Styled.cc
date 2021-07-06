@@ -1,0 +1,85 @@
+.services-example
+  margin-bottom: 80px
+  +r(959)
+    margin-bottom: 70px
+  +r(639)
+    margin-bottom: 40px
+  h3
+    color: white
+    font-size: 30px
+    +fz(30, 22)
+    font-weight: 500
+    text-transform: uppercase
+
+.services-example__box
+  display: block
+  position: relative
+  background-color: #4f4f4f
+  color: white
+  font-size: 18px
+  +fz(18, 14)
+  font-weight: 400
+  line-height: 1.33
+  padding: 50px 60px
+  height: 100%
+  box-sizing: border-box
+
+  +r(639)
+    padding: 30px
+  +r(374)
+    padding: 20px
+
+  .accent
+    color: #4f4f4f
+    font-weight: 700
+    background-color: #ff5e1d
+    text-align: center
+    padding: 5px 10px
+
+  &-title
+    color: #ff5e1d
+    font-size: 21px
+    +fz(21, 18)
+    font-weight: 700
+    line-height: 1.14
+    text-transform: uppercase
+    margin-bottom: 35px
+
+
+  &-list
+    margin-bottom: 30px
+    ul
+      list-style-type: none
+      padding: 0
+      margin: 0
+      li
+        & + li
+          margin-top: 10px
+
+      li
+        display: block
+        position: relative
+        padding-left: 24px
+        &:before
+          content: ''
+          display: block
+          width: 20px
+          height: 20px
+          position: absolute
+          top: 2px
+          left: -5px
+          background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' data-svg='triangle-right'%3E%3Cpolygon points='8 5 13 10 8 15' fill='%23ff5e1d'%3E%3C/polygon%3E%3C/svg%3E")
+
+  &-price
+    color: white
+    font-weight: 400
+    margin-top: 30px
+    +r(639)
+      text-align: center
+    .value
+      color: white
+      font-size: 40px
+      +fz(40, 24)
+      font-weight: 500
+      line-height: 1
+      margin-left: 10px

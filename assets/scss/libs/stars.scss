@@ -1,0 +1,26 @@
+.star {
+  font-size: x-large;
+  width: 50px;
+  display: inline-block;
+  color: gray;
+  position:relative;
+  text-align: center;
+  &:last-child {
+    margin-right: 0;
+  }
+  &:before {
+    content:'\2605';
+  }
+  &.on {
+    color: gold;
+  }
+  &.half:after {
+    content:'\2605';
+    color: gold;
+    position: absolute;
+    margin-left: 0;
+    width: 11px;
+    left:14px;
+    overflow: hidden;
+  }
+}

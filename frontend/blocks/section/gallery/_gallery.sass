@@ -1,0 +1,54 @@
+.section-gallery
+
+	.gallery-slider
+		+r(639)
+			margin-left: -15px
+			margin-right: -15px
+
+	.uk-slider
+		margin: 0 70px
+
+		+r(639)
+			margin: 0 30px
+
+	.uk-slider-items
+		& > li
+			& > a
+				display: block
+				position: relative
+				overflow: hidden
+				padding: 0 0 80% 0
+
+				img
+					width: 100%
+					height: 100%
+					object-fit: cover
+					position: absolute
+					top: 0
+					left: 0
+					filter: grayscale(1)
+					+tr(0.5s)
+
+					+hh
+						filter: sepia(1)
+						+tr(0.5s)
+
+	.uk-slidenav
+		padding: 5px
+		display: flex
+		justify-content: center
+		align-items: center
+		position: absolute
+		top: 0
+		width: 38px
+		height: 100%
+		background-color: #dedede
+		transform: none
+		box-sizing: border-box
+		color: #ffffff
+		+tr(0.3s)
+		+h
+			background-color: $accent
+
+		+r(639)
+			width: 25px

@@ -1,0 +1,54 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        web_root:
+            uri_prefix: ''
+            upload_destination: '%kernel.project_dir%/%web_root%'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            directory_namer:
+                service: vich_uploader.namer_directory_property
+                options: { property: 'imgFolder'}
+        web_root_photo:
+            uri_prefix: ''
+            upload_destination: '%kernel.project_dir%/%web_root%'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            directory_namer:
+                service: vich_uploader.namer_directory_property
+                options: { property: 'photoFolder'}
+        web_root_avatar:
+            uri_prefix: ''
+            upload_destination: '%kernel.project_dir%/%web_root%'
+            namer:
+                service: Vich\UploaderBundle\Naming\PropertyNamer
+                options: { property: 'avatarName'}
+            directory_namer:
+                service: vich_uploader.namer_directory_property
+                options: { property: 'avatarFolder'}        
+        web_root_property_namer:
+            uri_prefix: ''
+            upload_destination: '%kernel.project_dir%/%web_root%'
+            namer:
+                service: Vich\UploaderBundle\Naming\PropertyNamer
+                options: { property: 'imgName'}
+            directory_namer:
+                service: vich_uploader.namer_directory_property
+                options: { property: 'imgFolder'}
+        web_root_property_namer_before:
+            uri_prefix: ''
+            upload_destination: '%kernel.project_dir%/%web_root%'
+            namer:
+                service: Vich\UploaderBundle\Naming\PropertyNamer
+                options: { property: 'imgNameBefore'}
+            directory_namer:
+                service: vich_uploader.namer_directory_property
+                options: { property: 'imgFolder'}
+        web_root_property_namer_after:
+            uri_prefix: ''
+            upload_destination: '%kernel.project_dir%/%web_root%'
+            namer:
+                service: Vich\UploaderBundle\Naming\PropertyNamer
+                options: { property: 'imgNameAfter'}
+            directory_namer:
+                service: vich_uploader.namer_directory_property
+                options: { property: 'imgFolder'}

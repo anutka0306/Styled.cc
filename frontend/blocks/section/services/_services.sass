@@ -1,0 +1,55 @@
+.section-services
+  display: block
+  position: relative
+
+
+.service-item
+  display: block
+  position: relative
+  &__link
+    display: block
+    position: relative
+    +tr(0.5s)
+  &__media
+    display: block
+    position: relative
+    img
+      width: 100%
+      filter: grayscale(1)
+      +tr(0.5s)
+  &__title
+    display: block
+    position: relative
+    background-color: #4f4f4f
+    padding: 10px 15px
+    +tr(0.5s)
+    +r(639)
+      padding: 5px
+    span
+      color: white
+      font-family: LabGrotesque
+      font-size: 14px
+      +fz(14, 10)
+      line-height: 1
+      font-weight: 900
+      text-transform: uppercase
+
+  +hh
+    .service-item__link
+      text-decoration: none
+      +tr(0.5s)
+    .service-item__media img
+      filter: sepia(1)
+      +tr(0.5s)
+    .service-item__title
+      background-color: $accent
+      text-decoration: none
+      +tr(0.5s)
+
+.uk-background-secondary
+  .price-list
+    color: #ffffff
+    a
+      color: #ffffff
+
+

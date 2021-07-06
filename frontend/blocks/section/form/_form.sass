@@ -1,0 +1,65 @@
+.block-form
+	display: block
+	position: relative
+	&__title
+		color: white
+		font-family: LabGrotesque
+		font-size: 36px
+		+fz(36, 18)
+		font-weight: 700
+		margin: 0
+	&__desc
+		color: white
+		font-family: LabGrotesque
+		font-size: 16px
+		+fz(16, 14)
+		font-weight: 400
+		line-height: 1.5
+		margin-top: 0
+		margin-bottom: 35px
+
+	.uk-input
+		height: 50px
+		line-height: 50px
+		box-sizing: border-box
+
+	.uk-background-secondary
+		.uk-input
+			background-color: transparent
+			border: 2px solid white
+
+			color: white
+			font-size: 14px
+			font-weight: 400
+			text-transform: uppercase
+
+			+placeholder
+				color: white
+				font-size: 14px
+				font-weight: 400
+				text-transform: uppercase
+
+	.uk-select:not([multiple]):not([size])
+		padding-left: 50px
+		height: 50px!important
+		line-height: 50px
+		border: 2px solid white
+		background-color: $accent
+		box-sizing: border-box
+
+		color: white
+		font-size: 14px
+		font-weight: 400
+		text-transform: uppercase
+
+		background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' data-svg='triangle-down'%3E%3Cpolygon points='5 7 15 7 10 12' fill='%23fff'%3E%3C/polygon%3E%3C/svg%3E")
+		background-position: left 10px top 60%
+
+		+placeholder
+			color: white
+			font-size: 14px
+			font-weight: 400
+			text-transform: uppercase
+
+	.error-input
+		color: white

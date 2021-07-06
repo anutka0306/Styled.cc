@@ -1,0 +1,160 @@
+.page-header
+  display: block
+  position: relative
+
+  &__top
+    background-color: #0e0e0f
+    padding-top: 11px
+    padding-bottom: 11px
+    +r(767)
+      display: none
+
+  &__top-inner
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+  &__bottom
+    padding-top: 30px
+    padding-bottom: 30px
+    +r(767)
+      padding-top: 15px
+      padding-bottom: 15px
+
+  &__bottom-inner
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+    .nav
+      flex-grow: 1
+
+  &--fixed
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    z-index: 2
+
+.contact-item
+  color: #ffffff
+
+  .phone-link
+    display: inline-block
+    padding-left: 22px
+    color: white
+    font-family: 'Montserrat'
+    font-size: 14px
+    font-weight: 700
+    line-height: 16px
+    text-decoration: none
+    transition: all 0.3s
+    background-image: url(/assets/images/icons/phone.png)
+    background-repeat: no-repeat
+    background-position: left center
+    &:hover
+      color: $accent
+    +r(1200)
+      font-size: 12px
+
+  span
+    padding: 0 0 0 8px
+    +r(992)
+      display: none
+
+  .adress-link
+    color: white
+    font-family: 'Montserrat'
+    font-size: 13px
+    font-weight: 400
+    line-height: 16px
+    text-decoration: none
+    transition: all 0.3s
+    &:hover
+      color: $accent
+    +r(1200)
+      font-size: 12px
+    +r(992)
+      display: none
+
+.contacts-block
+  display: flex
+  flex-direction: column
+  justify-content: flex-end
+  align-items: flex-end
+  text-align: right
+  +r(992)
+    margin-left: auto
+  +r(374)
+    display: none
+  > * + *
+    margin-top: 10px
+    +r(767)
+      margin-top: 5px
+
+.phone-numb
+  display: inline-block
+  position: relative
+  color: white
+  font-family: 'Montserrat'
+  font-size: 20px
+  font-weight: 900
+  line-height: 16px
+  text-decoration: none
+  transition: all 0.3s
+  &:hover
+    color: $accent
+    text-decoration: none
+  +r(1200)
+    font-size: 18px
+  +r(992)
+    font-size: 16px
+  +r(767)
+    font-size: 13px
+
+
+.callback-link
+  display: inline-block
+  position: relative
+  color: #fc292f
+  font-family: 'Montserrat'
+  font-size: 14px
+  font-weight: 900
+  line-height: 16px
+  text-decoration: underline
+  transition: all 0.3s
+  &:hover
+    text-decoration: none
+    color: $accent
+  &:before
+    content: ''
+    display: block
+    position: absolute
+    top: 50%
+    left: -20px
+    width: 15px
+    height: 13px
+    margin-top: -7px
+    background-image: url(/assets/images/icons/callback-arrow.png)
+    background-repeat: no-repeat
+    background-position: center
+    background-size: cover
+  +r(1200)
+    font-size: 13px
+  +r(992)
+    font-size: 12px
+  +r(767)
+    font-size: 10px
+
+.btn-mobile-menu
+  display: none
+  +r(992)
+    display: block
+    margin-left: 20px
+
+  a
+    display: inline-block
+    position: relative
+    color: #ffffff
+    font-size: 30px
+    text-decoration: none

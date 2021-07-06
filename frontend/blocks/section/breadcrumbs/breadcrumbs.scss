@@ -1,0 +1,15 @@
+#breadcrumbs {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffffff;
+}
+
+.breadcrumbs_wrapper {
+  padding: 12px 45px;
+  line-height: 16px;
+}
+
+.breadcrumbs_wrapper span, .breadcrumbs_wrapper a {
+  color: #292929;
+  font-weight: bold;
+}

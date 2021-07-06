@@ -1,0 +1,638 @@
+/*----------------------------DIV 0 layer------------------------------*/
+.div0 {
+	position: absolute; /* Фиксированное положение */
+	background: none;
+    left: 150px; top: 120px;
+	width: 642px;
+	height: 490px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:9999;
+}
+/*----------------------------DIV 0 layer------------------------------*/
+
+/*----------------------------DIVS------------------------------*/
+.div1 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-01.png) no-repeat;
+    left: 5px; top: 10px;
+	width: 500px;
+	height: 386px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:20;
+}
+.div1:hover {
+	background: url(../images/arrays_hover-01.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div2 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-02.png) no-repeat;
+    left: 147px; top: 11px;
+	width: 500px;
+	height: 386px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:22;
+}
+.div2:hover {
+	background: url(../images/arrays_hover-02.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div3 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-32.png) no-repeat;
+    left: 226px; top: 11px;
+	width: 500px;
+	height: 386px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:22;
+}
+.div3:hover {
+	background: url(../images/arrays_hover-32.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div4 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-03.png) no-repeat;
+    left: 307px; top: 11px;
+	width: 500px;
+	height: 386px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:22;
+}
+.div4:hover {
+	background: url(../images/arrays_hover-03.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div5 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-04.png) no-repeat;
+    left: 385px; top: 11px;
+	width: 500px;
+	height: 386px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:22;
+}
+.div5:hover {
+	background: url(../images/arrays_hover-04.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div6 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-05.png) no-repeat;
+	left: 467px;
+	top: 11px;
+	width: 400px;
+	height: 386px;
+	display: inline-block;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	margin-left: 3%;
+	margin-top:23%
+;
+	z-index: 22;
+}
+.div6:hover {
+	background: url(../images/arrays_hover-05.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div7 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-06.png) no-repeat;
+	left: 548px;
+	top: 11px;
+	width: 350px;
+	height: 350px;
+	display: inline-block;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	margin-left: 3%;
+	margin-top:23%
+;
+	z-index: 22;
+}
+.div7:hover {
+	background: url(../images/arrays_hover-06.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div8 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-07.png) no-repeat;
+    left: 625px; top: 11px;
+	width: 96px;
+	height: 386px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:24;
+}
+.div8:hover {
+	background: url(../images/arrays_hover-07.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div9 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-08.png) no-repeat;
+    left: 639px; top: 11px;
+	width: 160px;
+	height: 386px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:23;
+}
+.div9:hover {
+	background: url(../images/arrays_hover-08.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div10 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-09.png) no-repeat;
+	left: 691px;
+	top: 11px;
+	width: 240px;
+	height: 386px;
+	display: inline-block;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	margin-left: 3%;
+	margin-top:23%
+;
+	z-index: 22;
+}
+.div10:hover {
+	background: url(../images/arrays_hover-09.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div11 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-10.png) no-repeat;
+    left: 430px; top: 117px;
+	width: 500px;
+	height: 386px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:22;
+}
+.div11:hover {
+	background: url(../images/arrays_hover-10.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div12 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-11.png) no-repeat;
+    left: 430px; top: 197px;
+	width: 500px;
+	height: 386px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:22;
+}
+.div12:hover {
+	background: url(../images/arrays_hover-11.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div13 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-12.png) no-repeat;
+    left: 430px; top: 277px;
+	width: 500px;
+	height: 386px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:22;
+}
+.div13:hover {
+	background: url(../images/arrays_hover-12.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div14 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-13.png) no-repeat;
+	left: 430px;
+	top: 359px;
+	width: 500px;
+	height: 200px;
+	display: inline-block;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	margin-left: 3%;
+	margin-top:23%
+;
+	z-index: 24;
+}
+.div14:hover {
+	background: url(../images/arrays_hover-13.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div15 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-14.png) no-repeat;
+    left: 430px; top: 415px;
+	width: 500px;
+	height: 123px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:28;
+}
+.div15:hover {
+	background: url(../images/arrays_hover-14.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div16 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-15.png) no-repeat;
+    left: 430px; top: 454px;
+	width: 500px;
+	height: 162px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:27;
+}
+.div16:hover {
+	background: url(../images/arrays_hover-15.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div17 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-16.png) no-repeat;
+    left: 618px; top: 437px;
+	width: 312px;
+	height: 279px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:26;
+}
+.div17:hover {
+	background: url(../images/arrays_hover-16.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div18 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-17.png) no-repeat;
+	left: 610px;
+	top: 457px;
+	width: 190px;
+	height: 259px;
+	display: inline-block;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	margin-left: 3%;
+	margin-top:23%
+;
+	z-index: 26;
+}
+.div18:hover {
+	background: url(../images/arrays_hover-17.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div19 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-18.png) no-repeat;
+	left: 594px;
+	top: 481px;
+	width: 125px;
+	height: 240px;
+	display: inline-block;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	margin-left: 3%;
+	margin-top:23%
+;
+	z-index: 26;
+}
+
+.div19:hover {
+	background: url(../images/arrays_hover-18.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div20 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-19.png) no-repeat;
+    left: 542px; top: 448px;
+	width: 91px;
+	height: 268px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:26;
+}
+.div20:hover {
+	background: url(../images/arrays_hover-19.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div21 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-20.png) no-repeat;
+    left: 463px; top: 518px;
+	width: 95px;
+	height: 199px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:26;
+}
+.div21:hover {
+	background: url(../images/arrays_hover-20.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div22 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-21.png) no-repeat;
+    left: 378px; top: 502px;
+	width: 162px;
+	height: 214px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:25;
+}
+.div22:hover {
+	background: url(../images/arrays_hover-21.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div23 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-22.png) no-repeat;
+    left: 298px; top: 331px;
+	width: 446px;
+	height: 386px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:24;
+}
+.div23:hover {
+	background: url(../images/arrays_hover-22.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div24 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-23.png) no-repeat;
+    left: 220px; top: 331px;
+	width: 445px;
+	height: 386px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:23;
+}
+.div24:hover {
+	background: url(../images/arrays_hover-23.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div25 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-24.png) no-repeat;
+    left: 140px; top: 331px;
+	width: 445px;
+	height: 386px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:22;
+}
+.div25:hover {
+	background: url(../images/arrays_hover-24.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div26 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-25.png) no-repeat;
+    left: 5px; top: 331px;
+	width: 445px;
+	height: 386px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:21;
+}
+.div26:hover {
+	background: url(../images/arrays_hover-25.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div27 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-26.png) no-repeat;
+    left: 5px; top: 476px;
+	width: 500px;
+	height: 143px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:22;
+}
+.div27:hover {
+	background: url(../images/arrays_hover-26.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div28 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-27.png) no-repeat;
+    left: 5px; top: 442px;
+	width: 500px;
+	height: 96px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:22;
+}
+.div28:hover {
+	background: url(../images/arrays_hover-27.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div29 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-28.png) no-repeat;
+    left: 5px; top: 362px;
+	width: 500px;
+	height: 96px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:22;
+}
+.div29:hover {
+	background: url(../images/arrays_hover-28.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div30 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-29.png) no-repeat;
+    left: 5px; top: 282px;
+	width: 500px;
+	height: 96px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:22;
+}
+.div30:hover {
+	background: url(../images/arrays_hover-29.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div31 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-30.png) no-repeat;
+    left: 5px; top: 203px;
+	width: 500px;
+	height: 386px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:21;
+}
+.div31:hover {
+	background: url(../images/arrays_hover-30.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/
+/*----------------------------DIVS------------------------------*/
+.div32 {
+	position: absolute; /* Фиксированное положение */
+	background: url(../images/arrays-31.png) no-repeat;
+    left: 5px; top: 119px;
+	width: 500px;
+	height: 386px;
+	display:inline-block;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+margin-left: 3%;
+margin-top:23%;
+z-index:20;
+}
+.div32:hover {
+	background: url(../images/arrays_hover-31.png) no-repeat;
+}
+/*----------------------------DIVS------------------------------*/

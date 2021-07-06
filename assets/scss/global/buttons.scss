@@ -1,0 +1,16 @@
+.primary_button {
+  padding: 20px 35px 20px 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: #007cc3;
+  color: white;
+  font-family: "Roboto";
+  font-size: 14px;
+  position: relative;
+  clip-path: polygon(0 0, 0 100%, 100% 100%, 87% 0%);
+  border: 0;
+  display: inline-block;
+  &:hover {
+    background-color: #006ead;
+  }
+}

@@ -1,0 +1,353 @@
+#vin_inline { display: none; width: 590px; }
+#photo_inline { display: none; width: 590px; }
+p.title_modal { font-size: 1.8em; line-height: 0.9em; margin-bottom: 5px; margin-top:1px; }
+
+.but_rot {
+	font-family: "Roboto", Arial, Helvetica, sans-serif;
+	text-decoration:none;
+	position: absolute;
+  top: 50%;
+  right: -1.5em;
+  display: inline-block;
+  margin: 0;
+  z-index: 2;
+  font-size: 3vh;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  -webkit-transform: translateY(-50%) rotate(-90deg);
+          transform: translateY(-50%) rotate(-90deg);
+  -webkit-transition: 1s .3s;
+  transition: 1s .3s;
+}
+.but_rot a{
+	font-family: "Roboto", Arial, Helvetica, sans-serif;
+	text-decoration:none;
+	
+}
+#but_rot a{
+	font-family: "Roboto", Arial, Helvetica, sans-serif;
+	text-decoration:none;
+	margin-top:10px;
+color:#34495e;
+	
+}
+#but_rot i{
+	position:absolute;
+	left:10px;
+	top:16px;
+	font-size:40px;
+	margin-top:5px;
+	
+}
+   #but_rot {
+	   opacity: 1;
+	   font-size:14px;
+	   padding-left:55px;
+	   padding-right:0px;
+	   padding-top:15px;
+    height: 67px;
+    width: 120px;
+   background:    #fff;
+background:    -webkit-linear-gradient(#fff, #efefef);
+background:    linear-gradient(#fff, #efefef);
+
+	-webkit-border-radius: 999px 0 0 999px;
+-moz-border-radius: 999px 0 0 999px;
+border-radius: 999px 0 0 999px;
+    position: fixed;
+	text-align: left;
+    z-index: 999;
+	-webkit-box-shadow: -5px 5px 12px rgba(0, 0, 0, 0.3);
+-moz-box-shadow: -5px 5px 12px rgba(0, 0, 0, 0.3);
+box-shadow: -5px 5px 12px rgba(0, 0, 0, 0.3);
+
+}
+.but_rot_element {
+	border: 2px solid #D10003;
+    right: -130px;
+    top: 160px;
+	-webkit-transition: all .4s ease-in-out;
+	-moz-transition: all .4s ease-in-out;
+	-ms-transition: all .4s ease-in-out;
+	-o-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+	-webkit-animation: shake 6s 0s both infinite;
+    -moz-animation: shake 6s 0s both infinite;
+    -o-animation: shake 6s 0s both infinite;
+    animation: shake 6s 0s both infinite;
+}
+.p_red {
+	border: 2px solid #D10003;
+}
+.p_yell {
+	border: 2px solid #FFA600;
+}
+.p_gr {
+	border: 2px solid #01B300;
+}
+.but_rot_element:hover {
+    right: -25px;
+}
+.top_01 {
+	top: 160px;
+}
+.top_02 {
+	top: 260px;
+}
+.top_01 {
+	top: 360px;
+}
+
+.z_01 {
+	-webkit-animation: shake 10s 0s both infinite;
+    -moz-animation: shake 10s 0s both infinite;
+    -o-animation: shake 10s 0s both infinite;
+    animation: shake 10s 0s both infinite;
+}
+.z_02 {
+	-webkit-animation: shake 10s 2s both infinite;
+    -moz-animation: shake 10s 2s both infinite;
+    -o-animation: shake 10s 2s both infinite;
+    animation: shake 10s 2s both infinite;
+}
+.z_03 {
+	-webkit-animation: shake 10s 4s both infinite;
+    -moz-animation: shake 10s 4s both infinite;
+    -o-animation: shake 10s 4s both infinite;
+    animation: shake 10s 4s both infinite;
+}
+
+.txt { 
+display: inline-block; 
+color: #676767;
+width: 420px; 
+margin-bottom: 10px; 
+border: 1px dotted #ccc; 
+padding: 5px 9px;
+font-size: 1.2em;
+line-height: 1.4em;
+}
+
+.txtarea { 
+display: block; 
+resize: none;
+color: #676767;
+margin-bottom: 10px; 
+width: 500px; 
+height: 150px;
+border: 1px dotted #ccc;
+padding: 5px 9px; 
+font-size: 1.2em;
+line-height: 1.4em;
+}
+
+.txt:focus, .txtarea:focus { border-style: solid; border-color: #bababa; color: #444; }
+
+.smart-forms input.error, .smart-forms .select>select.error, textarea.error { border: #DF0003 solid 2px;}
+.smart-forms input.error:focus, textarea.error:focus { border: #34495e solid 1px;  }
+#checktext.error {color:#E40003}
+#send { 
+
+}
+#send.error {
+	background:#EB0003; 
+
+}
+#send:hover {
+
+}
+#send:active {
+
+}
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    background-color: #fff;
+    background-image: none;
+    color: rgb(0, 0, 0);
+}
+#vin_btn {
+	-webkit-animation: shake 6s 0s both infinite;
+    -moz-animation: shake 6s 0s both infinite;
+    -o-animation: shake 6s 0s both infinite;
+    animation: shake 6s 0s both infinite;
+}
+@-webkit-keyframes shake {
+    80%, 100% {-webkit-transform: translate3d(0, 0, 0);transform: translate3d(0, 0, 0);}
+    82%, 86%, 90%, 94%, 98% {-webkit-transform: translate3d(-5px, 0, 0);transform: translate3d(-5px, 0, 0);}
+    84%, 88%, 92%, 96% {-webkit-transform: translate3d(3px, 0, 0);transform: translate3d(3px, 0, 0);}
+}
+@keyframes shake {
+    80%, 100% {-webkit-transform: translate3d(0, 0, 0);transform: translate3d(0, 0, 0);}
+    82%, 86%, 90%, 94%, 98% {-webkit-transform: translate3d(-5px, 0, 0);transform: translate3d(-5px, 0, 0);}
+    84%, 88%, 92%, 96% {-webkit-transform: translate3d(3px, 0, 0);transform: translate3d(3px, 0, 0);}
+}
+.for_label {
+	font-size:14px;
+	margin-bottom:1px;
+margin-top:1px;
+}
+span.c_red {
+	font-size:18px;
+	color:#DD0003;
+}
+
+/*-------------------------------------*/
+.input-container {
+	
+	margin-top:10px;
+	margin-left:30px;
+  
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  display: inline-block;
+}
+.input-container input {
+  margin-top: 28px;
+}
+
+
+.recaptcha {
+  font-size: 12px;
+  margin-left: -55px;
+  position: relative;
+  bottom: -10px;
+}
+
+.dash {
+  font-size: 8px;
+  text-decoration: none;
+  display: inline;
+  position: relative;
+  top: -22px;
+  right: -232px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.triangle {
+  width: 0px;
+  height: 0px;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #cccccc;
+  border-top: 7px solid transparent;
+  position: relative;
+  left: 10px;
+  top: -55px;
+}
+
+.not-human {
+  width: 340px;
+  height: 200px;
+  background-color: white;
+  border: 1px solid #cccccc;
+  padding: 15px;
+  position: relative;
+  top: -55px;
+  left: 3px;
+}
+.not-human .captcha-code {
+  padding: 15px 0;
+  border: none;
+  border-bottom: 1px solid #cccccc;
+  font-size: 18px;
+  width: 90%;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+.not-human .captcha-code:focus {
+  outline: none;
+  border-bottom: 1px solid #4a90e2;
+}
+.not-human img {
+  display: inline-block;
+  position: relative;
+  left: 75px;
+  top: -80px;
+  width: 300px;
+  height: 57px;
+}
+.not-human .line {
+  width: 370px;
+  height: 1px;
+  background-color: #cccccc;
+  margin-top: 90px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+.not-human .img {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  top: -36px;
+  margin: 0 4px 75px 4px;
+  display: inline-block;
+  cursor: pointer;
+  background-size: 24px 24px;
+  opacity: 0.55;
+}
+.not-human .img.replay {
+  background: url("../../www.gstatic.com/recaptcha/api2/refresh.png"/*tpa=https://www.gstatic.com/recaptcha/api2/refresh.png*/);
+}
+.not-human .img.audio {
+  background: url("../../www.gstatic.com/recaptcha/api2/audio.png"/*tpa=https://www.gstatic.com/recaptcha/api2/audio.png*/);
+}
+.not-human .img.info {
+  background: url("../../www.gstatic.com/recaptcha/api2/info.png"/*tpa=https://www.gstatic.com/recaptcha/api2/info.png*/);
+}
+.not-human .img:hover {
+  opacity: 1.0;
+}
+.not-human .verify {
+  float: right;
+  position: relative;
+  top: -42px;
+  margin-right: 5px;
+  background-color: #4a90e2;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
+}
+/*------------------------------------------*/
+.__lk-fileInput {
+  cursor: pointer;
+  width:100%;
+}
+.__lk-fileInput input {
+  display: none;
+}
+.__lk-fileInput span {
+	width:100%;
+  color: #fff;
+  margin: 0 0 10px;
+  padding: 6px 8px;
+  text-decoration: none;
+  background: #34495E;
+  border-radius: 2px;
+  line-height:27px;
+}
+.__lk-fileInput span:hover {
+  background: #597796;
+}
+
+.__lk-fileInput span:before {
+font-family: FontAwesome;
+  content: "\f030";
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0px;
+  margin-right: 8px;
+}
+
+.__lk-fileInput span.error {background:#F00}
+
+.__lk-fileInput span.withFile {background: #00698A}

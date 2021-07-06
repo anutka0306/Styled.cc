@@ -1,0 +1,17 @@
+<div class="brands uk-grid uk-child-width-1-2@m" data-uk-grid="data-uk-grid">
+    {% for row in items|batch(4) %}
+        <div>
+            <div class="uk-grid uk-child-width-1-4@m uk-child-width-1-3@s uk-child-width-1-2" data-uk-grid="data-uk-grid">
+                {% for brand in row %}
+                    <div>
+                        <div class="catalog-item-brand">
+                            <div class="catalog-item-brand__media"><a href="{{ brand.path }}"><img {{ lazy_load(asset(brand.imageUrl)) }} alt="{{ brand.name }}"/></a></div>
+                            <div class="catalog-item-brand__title"><a href="{{ brand.path }}#">{{ brand.name }}</a></div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<div class="brands__more"><a class="uk-button uk-button-danger" href="#">Показать ещё марки</a></div>

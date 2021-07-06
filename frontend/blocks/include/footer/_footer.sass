@@ -1,0 +1,119 @@
+.page-footer
+  background-color: #636363
+  color: white
+  font-size: 16px
+  +fz(16, 12)
+  font-weight: 400
+  line-height: 1.5
+
+  +r(639)
+    padding-bottom: 40px
+
+
+.btn-fixed
+  position: fixed
+  z-index: 5
+  right: 0
+  top: 50%
+  transform: rotate(-90deg) translate(0, 380%)
+  display: flex
+
+  > a + a
+    margin-left: 10px
+    +r(959)
+      margin-left: 5px
+
+  +r(1680)
+    transform: rotate(-90deg) translate(0, 350%)
+
+  +r(1200)
+    top: auto
+    width: 100%
+    bottom: 0
+    justify-content: flex-end
+    transform: rotate(0) translate(0, 0)
+
+  +rh(700)
+    top: auto
+    width: 100%
+    bottom: 0
+    justify-content: flex-end
+    transform: rotate(0) translate(0, 0)
+
+  +r(639)
+    left: 0
+    justify-content: space-between
+
+.calc-btn,
+.repairs-btn
+  display: inline-flex
+  align-items: center
+  background-color: #0e0e0f
+  height: 65px
+  line-height: 65px
+  color: white
+  font-family: Montserrat
+  font-size: 16px
+  +fz(16, 8)
+  font-weight: 900
+  text-transform: uppercase
+  text-decoration: none
+  padding: 0 30px
+  transition: all 0.5s
+  img
+    margin-right: 16px
+  .uk-icon
+    margin-right: 10px
+    color: $accent
+  &:hover
+    background-color: lighten(#0e0e0f, 10%)
+    text-decoration: none
+    color: #ffffff
+  +r(1200)
+    font-size: 14px
+  +r(767)
+    padding: 0 15px
+    height: 40px
+    line-height: 40px
+    max-width: 100%
+    display: block
+    flex-grow: 1
+
+.social-block
+  position: fixed
+  z-index: 5
+  bottom: 20px
+  left: 20px
+  display: block
+
+  +r(959)
+    display: none
+
+  &__list
+    ul
+      list-style-type: none
+      padding: 0
+      margin: 0
+
+  &__title
+    writing-mode: vertical-rl
+    white-space: nowrap
+    margin: 0 0 20px 0
+    span
+
+      color: #a9a8a8
+      font-family: LabGrotesque
+      font-size: 8px
+      font-weight: 400
+      line-height: 24px
+      text-transform: uppercase
+
+      transform: rotate(180deg)
+
+      &:after
+        content: ''
+        display: inline-block
+        width: 1px
+        height: 30px
+        background-color: #a9a8a8
+        margin-top: 20px

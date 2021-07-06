@@ -1,0 +1,131 @@
+/* iGallery container
+================================================== */
+.iGalleryContainer{
+	position: relative;
+	width: 100%;
+
+	height: 500px;
+}
+.igalleryGroup{
+	width: 100%;
+	margin-top: 5px;
+	display: none;
+}
+.iThumb{
+	position: absolute;
+
+}
+.iThumb:hover{
+	box-shadow: 1px 1px 8px #555;
+}
+.iThumbHidden{
+	display: none;
+}
+/* gallery back button - style here
+================================================== */
+a.iGalBackBTN{
+	float: right;
+	margin-bottom: 10px;
+	font-size: 14px;
+	padding: 7px;
+	color: #fff;
+	text-decoration: none;
+	background-color: #e31313;
+	/*font-family: Tahoma, Geneva, sans-serif;*/
+}
+a.iGalBackBTN:hover{
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+.iclear-fx{
+	clear: both;
+}
+
+.galleryPreloader{
+	width: 100%;
+}
+.galleryPreloader div{
+	width: 28px;
+	height: 28px;
+	position: relative;
+	margin: auto;
+}
+
+/* group name - style group name here
+================================================== */
+.iGalGroupLabel{
+	position: absolute;
+	font-size: 14px;
+	font-weight:800;
+	z-index: 9999;
+	margin-bottom: 20px;
+	/*font-family: Tahoma, Geneva, sans-serif;*/
+}
+
+
+/* iGallery lightbox
+================================================== */
+#sk_igallery_lightbox{
+	width: 100%;
+	height: 2px;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	background-color: #000;
+	background: rgba(0,0,0,0.90);
+	z-index: 9999;
+	overflow: hidden;
+}
+#isecure_screen{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	z-index: 10000;
+}
+.iGalleryPreloader{
+	width: 28px;
+	height: 28px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+/* lightbox caption - style caption here
+================================================== */
+#ilghtb_caption{
+	position: absolute;
+	width: 100%;
+	top: 15px;
+	left: 0px;
+	color: #CCC;
+	text-align: center;
+	font-size: 14px;
+	font-family: Tahoma, Geneva, sans-serif;
+}
+#ilghtb_img{
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	position: absolute;
+}
+#ilghtb_controls{
+	position: absolute;
+	bottom: 15px;
+	left: 0px;
+}
+a.genericBoxButtonLightbox{
+	width: 27px;
+	height: 27px;
+	display: block;
+	outline: none;
+}
+.ifloatRight{
+	float: right;
+}
+.iLightboxDisabledButton{
+	cursor: default;
+}
+

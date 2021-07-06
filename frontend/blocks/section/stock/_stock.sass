@@ -1,0 +1,102 @@
+.section-stock
+
+	.stock-slider
+		+r(639)
+			margin-left: -15px
+			margin-right: -15px
+
+	.uk-slider
+		margin: 0 70px
+
+		+r(639)
+			margin: 0 30px
+
+	.uk-slidenav
+		padding: 5px
+		display: flex
+		justify-content: center
+		align-items: center
+		position: absolute
+		top: 0
+		width: 38px
+		height: 100%
+		background-color: #dedede
+		transform: none
+		box-sizing: border-box
+		color: #ffffff
+		+tr(0.3s)
+		+h
+			background-color: $accent
+
+		+r(639)
+			width: 25px
+
+.single-stock-item-wrapper
+	width: 326px
+	margin: 2em auto !important
+
+.stock-item
+	display: flex
+	flex-direction: column
+	position: relative
+	background-color: #3e9dcf
+	height: 100%
+.stock-item__media
+	display: block
+	position: relative
+	img
+		width: 100%
+.stock-item__title
+	display: block
+	position: relative
+	color: white
+	font-size: 20px
+	+fz(20, 14)
+	font-weight: 700
+	text-transform: uppercase
+	background-color: #000000
+	padding: 10px 20px
+	margin-top: -10px
+	min-height: 50px
+.stock-item__desc
+	padding: 10px 20px
+	flex-grow: 1
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	box-sizing: border-box
+.stock-item__intro
+	color: white
+	font-size: 13px
+	font-weight: 500
+.stock-item__bottom
+	display: flex
+	justify-content: space-between
+	align-items: center
+	margin-top: 10px
+.stock-item__price
+	.current
+		color: white
+		font-size: 24px
+		+fz(24, 16)
+		font-weight: 700
+		margin-right: 15px
+	.old
+		color: #252424
+		font-size: 15px
+		+fz(15, 12)
+		font-weight: 500
+		text-decoration: line-through
+.stock-item__btn
+	a
+		display: inline-block
+		padding: 5px
+		background-color: #ffffff
+		color: black
+		font-size: 12px
+		font-weight: 700
+		+tr(0.3s)
+		+hh
+			text-decoration: none
+			color: #ffffff
+			background-color: $accent

@@ -1,0 +1,293 @@
+.hero
+  display: block
+  position: relative
+  background-image: url(/assets/images/bg_hero.jpg)
+  background-position: right center
+  background-repeat: no-repeat
+  background-size: cover
+  height: 100vh
+  min-height: 700px
+  overflow: hidden
+  +r(992)
+    max-height: none
+  +r(767)
+    background-position: center left
+    min-height: auto
+
+  @media screen and (max-width: 767px) and (orientation: landscape)
+    min-height: 568px
+
+  .uk-container
+    height: 100%
+
+  &__box
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    height: 100%
+    padding-top: 235px
+    padding-bottom: 135px
+    box-sizing: border-box
+    +r(992)
+      padding-top: 130px
+      padding-bottom: 100px
+    +r(767)
+      padding-top: 70px
+      padding-bottom: 70px
+      justify-content: center
+
+  &__content
+    position: relative
+    .youtube-btn
+      position: absolute
+      top: -100px
+      right: 0
+      +r(1200)
+        top: 20px
+        right: 25px
+      +r(992)
+        display: inline-flex
+        position: relative
+        top: 0
+        right: auto
+        left: 50%
+        transform: translateX(-50%)
+
+  &__title
+    color: white
+    font-family: 'Montserrat'
+    font-size: 70px
+    font-weight: 900
+    line-height: 1
+
+    +r(1200)
+      font-size: 110px
+      padding: 0 25px
+    +r(767)
+      font-size: 80px
+      padding: 0
+    +r(579)
+      font-size: 70px
+    +r(479)
+      font-size: 50px
+
+    span
+      display: block
+      position: relative
+      text-align: right
+
+      &:first-child
+        text-align: left
+        padding-left: 60px
+        font-size: 140px
+        line-height: 0.8
+        +r(992)
+          padding-left: 0
+
+        &:before,
+        &:after
+          content: ''
+          display: block
+          position: absolute
+          right: 100%
+          top: 50%
+          transform: translateY(-50%)
+          +r(992)
+            display: none
+
+        &:before
+          width: 50vw
+          height: 1px
+          background-color: #ffffff
+
+        &:after
+          right: calc(100% - 37px)
+          width: 37px
+          height: 5px
+          background-color: #ffffff
+
+      &:nth-child(2)
+        padding-right: 70px
+        font-size: 140px
+        line-height: 0.8
+        +r(992)
+          padding-right: 0
+
+        &:before,
+        &:after
+          content: ''
+          display: block
+          position: absolute
+          left: 100%
+          top: 60%
+          transform: translateY(-50%)
+
+          +r(992)
+            display: none
+
+        &:before
+          width: 50vw
+          height: 1px
+          background-color: #ffffff
+
+        &:after
+          left: calc(100% - 37px)
+          width: 37px
+          height: 5px
+          background-color: #ffffff
+
+      &.small-text
+        color: white
+        font-family: 'Montserrat'
+        font-size: 36px
+        font-weight: 500
+        line-height: 1
+        margin-top: 10px
+        padding-right: 70px
+        +r(1200)
+          font-size: 24px
+        +r(992)
+          padding-right: 0
+          font-size: 20px
+
+      &.circle
+        display: block
+        position: absolute
+        top: 66%
+        right: -170px
+        transform: translateY(-50%)
+        width: 805px
+        width: 41.92708333333333vw
+        height: 805px
+        height: 41.92708333333333vw
+        border: 1px solid rgba(#ffffff, 0.2)
+        border-radius: 50%
+
+        +r(992)
+          display: none
+
+        &:before,
+        &:after
+          content: ''
+          display: block
+          position: absolute
+          top: 50%
+          left: 50%
+          transform: translate(-50%, -50%)
+          border-radius: 50%
+
+        &:before
+          width: 522px
+          width: 27.1875vw
+          height: 522px
+          height: 27.1875vw
+          border: 1px solid white
+
+        &:after
+          width: 671px
+          width: 34.94791666666667vw
+          height: 671px
+          height: 34.94791666666667vw
+          border: 1px solid rgba(#ffffff, 0.4)
+
+  &__plus
+    display: flex
+    justify-content: space-between
+    align-items: center
+    +r(666)
+      display: table
+      margin: 20px auto 0
+
+
+.youtube-btn
+  display: inline-flex
+  align-items: center
+  padding: 20px 25px
+  background-color: #fc292f
+  box-shadow: 0 0 25px rgba(255, 94, 59, 0.75)
+  color: #ffffff
+  text-decoration: none
+  border-radius: 20px/30px
+  transition: all 0.3s
+  &:hover
+    box-shadow: none
+    color: #ffffff
+    text-decoration: none
+  +r(1200)
+    padding: 15px 20px
+  +r(767)
+    padding: 10px 15px
+  p
+    display: flex
+    flex-direction: column
+    margin: 0
+    margin-left: 20px
+    b
+      font-family: 'Montserrat'
+      font-size: 18px
+      font-weight: 900
+      line-height: 1.111111111111111
+      text-transform: uppercase
+      +r(1200)
+        font-size: 16px
+      +r(767)
+        font-size: 14px
+    span
+      font-family: 'Montserrat'
+      font-size: 14px
+      font-weight: 400
+      line-height: 1.428571428571429
+      +r(1200)
+        font-size: 13px
+      +r(767)
+        font-size: 12px
+
+.hero-plus-item
+  display: flex
+  align-items: center
+  color: white
+  font-family: 'Montserrat'
+  font-size: 18px
+  +fz(18, 10)
+  font-weight: 400
+  line-height: 1.333333333333333
+  & + .hero-plus-item
+    +r(767)
+      margin-top: 10px
+  &__value
+    display: block
+    position: relative
+    color: white
+    font-family: 'Montserrat'
+    font-size: 72px
+    +fz(72, 36)
+    font-weight: 900
+    line-height: 1.541666666666667
+    margin-right: 20px
+    +r(776)
+      text-align: right
+      font-size: 30px
+      flex: 0 0 80px
+    small
+      display: block
+      position: absolute
+      left: 10px
+      top: 0
+      color: white
+      font-family: 'Montserrat'
+      font-size: 18px
+      +fz(18, 16)
+      font-weight: 900
+      line-height: 1.333333333333333
+      text-transform: uppercase
+      +r(992)
+        left: auto
+        right: 0
+        top: -5px
+    img
+      width: 95px
+      width: 4.947916666666667vw
+      +r(992)
+        width: 70px
+      +r(767)
+        width: 50px

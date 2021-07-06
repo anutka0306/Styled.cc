@@ -1,0 +1,954 @@
+easy_admin:
+  site_name: 'Админ-панель'
+  design:
+    form_theme: # Both themes are for ckeditor integration
+      - "@EasyAdmin/form/bootstrap_4.html.twig"
+      - "@FOSCKEditor/Form/ckeditor_widget.html.twig"
+    assets:
+      css:
+        - 'css/admin.css'
+        - 'css/jquery.dm-uploader.css'
+      js:
+        - 'js/apply_button.js'
+        - 'js/cache_clear.js'
+        - 'js/select_all.js'
+    menu:
+      - label: 'Редактор страниц'
+        icon: 'file-alt'
+        children:
+          - { label: 'Марки', icon: 'car', entity: 'Brand' }
+          - { label: 'Модели', icon: 'car', entity: 'Model' }
+          - { label: 'Услуги моделей', icon: 'wrench', entity: 'Service' }
+          - { label: 'Услуги без моделей', icon: 'wrench', entity: 'RootService' }
+          - { label: 'Обычные страницы', icon: 'file', entity: 'Simple' }
+          - { label: 'Вакансии', icon: 'user', entity: 'Vacancy' }
+      - label: 'Прайс-лист'
+        icon: 'hand-holding-usd'
+        children:
+          - { label: 'Марки', icon: 'car', entity: 'PriceBrand' }
+          - { label: 'Модели', icon: 'car', entity: 'PriceModel' }
+          - { label: 'Категории услуг', icon: 'folder', entity: 'PriceCategory' }
+          - { label: 'Дерево категорий', icon: 'tree', route: 'admin_price_category_tree' }
+          - { label: 'Услуги', icon: 'wrench', entity: 'PriceService' }
+          - { label: 'Классы', icon: 'hand-holding-usd', entity: 'PriceClass' }
+      - {label: 'Отзывы',icon: 'comment-dots',entity: 'Reviews'}
+      - {label: 'FAQ',icon: 'comment-dots',entity: 'Faq'}
+      - {label: 'Новости',icon: 'newspaper',entity: 'News'}
+      - {label: 'Примеры работ',icon: 'briefcase',entity: 'Naschiraboty'}
+      - {label: 'До и после',icon: 'photo-video',entity: 'BeforeAfter'}
+      - label: 'Видео'
+        icon: 'video'
+        children:
+          - {label: 'Видео',icon: 'video',entity: 'Video'}
+          - {label: 'Категории видео',icon: 'photo-video',entity: 'VideoCategory'}
+      - {label: 'Галерея наших работ',icon: 'briefcase',entity: 'OurWorks'}
+      - {label: 'Акции',icon: 'tags',entity: 'SpecialOffer'}
+      - {label: 'Салоны',icon: 'home',entity: 'Salon'}
+      - label: 'Адреса'
+        icon: 'address-book'
+        children:
+          - {label: 'Города', icon: 'home',entity: 'City'}
+          - {label: 'Районы', icon: 'home',entity: 'District'}
+          - {label: 'Линии метро', icon: 'subway',entity: 'SubwayLine'}
+          - {label: 'Станции метро', icon: 'subway',entity: 'SubwayStation' }
+      - label: 'Матрица услуг'
+        icon: 'wrench'
+        children:
+          - {label: 'Марки/модели', icon: 'car', route: 'admin_published_services_index' }
+          - {label: 'Общие услуги прайса', icon: 'wrench', route: 'admin_published_services_common' }
+          - {label: 'Опубликованные услуги без текста', icon: 'toggle-on', route: 'admin_published_services_list_whithout_text' }
+          - {label: 'Не опубликованные услуги', icon: 'toggle-off ', route: 'admin_published_services_list_unpublished' }
+      - {label: 'Настройки',icon: 'cogs',entity: 'Config'}
+      - label: 'Технические ссылки'
+        icon: 'cogs'
+        children:
+          - {label: 'Массовый редактор страниц', icon: 'cogs', route: 'admin_page_generator' }
+          - {label: 'Обновить категории услуг', icon: 'cogs', route: 'admin_linker_categories' }
+          - {label: 'Генератор рейтинга',icon: 'cogs',route: 'admin_generator_index'}
+
+  list:
+    max_results: 500
+  show:
+    max_results: 500
+  entities:
+    Brand:
+      class: App\Entity\Brand
+      label: "Марка"
+      search:
+        fields:
+          - { property: 'name', label: 'Название' }
+          - { property: 'h1', label: 'H1' }
+      list:
+        fields:
+          - id
+          - { property: 'path', label: 'URI', type: 'url' }
+          - { property: 'h1', label: 'H1' }
+          - { property: 'name', label: 'Название' }
+          #- { property: 'sort', label: 'Сортировка' }
+          - { property: 'pages', label: 'Кол-во услуг' }
+      form:
+        fields:
+          - { property: 'path', label: 'URI' }
+          - { property: 'name', label: 'Название' }
+          - { property: 'h1', label: 'H1' }
+          - { property: 'metaTitle', label: 'Мета-заголовок', help: 'Можно не указывать - генерируется автоматически' }
+          - { property: 'metaDescription', label: 'Мета-описание', type: 'textarea' }
+          - { property: 'text', label: 'Текст', type: 'fos_ckeditor' }
+          #                    - { property: 'sort', label: 'Сортировка' }
+          - { property: 'images', label: 'Изображения' }
+          - { property: 'ratingValue', label: 'Рейтинг' }
+          - { property: 'ratingCount', label: 'Кол-во голосов' }
+          #                    - { property: 'modelName', label: 'Название модели', type: 'text' }
+          - { property: 'modifyDate', label: 'Дата модификации', type_options: { widget: 'single_text' } }
+          - { property: 'parent', label: 'Родитель', type: 'easyadmin_autocomplete' }
+          - { property: 'pages', label: 'Услуги', type: 'easyadmin_autocomplete' }
+    Model:
+      class: App\Entity\Model
+      label: "Модель"
+      search:
+        fields:
+          - { property: 'name', label: 'Название' }
+          - { property: 'h1', label: 'H1' }
+      list:
+        fields:
+          - id
+          - { property: 'path', label: 'URI', type: 'url' }
+          - { property: 'name', label: 'Название' }
+          - { property: 'h1', label: 'H1' }
+          #                    - { property: 'sort', label: 'Сортировка' }
+          - { property: 'priceModel', label: 'Название модели' }
+          - { property: 'pages', label: 'Кол-во услуг' }
+      form:
+        fields:
+          - { property: 'path', label: 'URI' }
+          - { property: 'name', label: 'Название' }
+          - { property: 'h1', label: 'H1' }
+          - { property: 'metaTitle', label: 'Мета-заголовок', help: 'Можно не указывать - генерируется автоматически' }
+          - { property: 'metaDescription', label: 'Мета-описание', type: 'textarea' }
+          - { property: 'text', label: 'Текст', type: 'fos_ckeditor' }
+          #                    - { property: 'sort', label: 'Сортировка' }
+          - { property: 'images', label: 'Изображения' }
+          - { property: 'ratingValue', label: 'Рейтинг' }
+          - { property: 'ratingCount', label: 'Кол-во голосов' }
+          - { property: 'priceModel', label: 'Модель прайса' }
+          - { property: 'modifyDate', label: 'Дата модификации', type_options: { widget: 'single_text' } }
+          - { property: 'parent', label: 'Родитель', type: 'easyadmin_autocomplete' }
+          - { property: 'pages', label: 'Услуги', type: 'easyadmin_autocomplete' }
+    Content:
+      class: App\Entity\Content
+      label: "Страницы"
+      search:
+        fields:
+          - { property: 'name', label: 'Название' }
+          - { property: 'h1', label: 'H1' }
+
+    Service:
+      class: App\Entity\Service
+      label: "Услуга Модели"
+      search:
+        fields:
+          - { property: 'name', label: 'Название' }
+          - { property: 'h1', label: 'H1' }
+      list:
+        fields:
+          - id
+          - { property: 'path', label: 'URI', type: 'url' }
+          - { property: 'name', label: 'Название' }
+          - { property: 'h1', label: 'H1' }
+          #                    - { property: 'sort', label: 'Сортировка' }
+          - { property: 'parent', label: 'Родитель' }
+          - { property: 'published', label: 'Опубликовано' }
+        filters:
+          - {property: 'name', label: 'Название'}
+          - {property: 'path', label: 'Ссылка'}
+          - {property: 'parent', label: 'Родитель'}
+          - {property: 'service', label: 'Услуга прайса' }
+          - {property: 'published', label: 'Статус публикации' }
+      form:
+        fields:
+          - { property: 'path', label: 'URI' }
+          - { property: 'name', label: 'Название' }
+          - { property: 'published', label: 'Опубликовано' }
+          - { property: 'h1', label: 'H1' }
+          - { property: 'metaTitle', label: 'Мета-заголовок', help: 'Можно не указывать - генерируется автоматически' }
+          - { property: 'metaDescription', label: 'Мета-описание', type: 'textarea' }
+          - { property: 'text', label: 'Текст', type: 'fos_ckeditor' }
+          #                    - { property: 'sort', label: 'Сортировка' }
+          #                    - { property: 'images', label: 'Изображения' }
+          - { property: 'modifyDate', label: 'Дата модификации', type_options: { widget: 'single_text' } }
+          - { property: 'ratingValue', label: 'Рейтинг' }
+          - { property: 'ratingCount', label: 'Кол-во голосов' }
+          - { property: 'parent', label: 'Родитель', type: 'easyadmin_autocomplete' }
+          - { property: 'service', label: 'Услуга прайса', type: 'easyadmin_autocomplete' }
+          - { property: 'priceCategory', label: 'Категория прайса', type: 'easyadmin_autocomplete', type_options: { class: 'App\Entity\PriceCategory' } }
+    RootService:
+      class: App\Entity\RootService
+      label: "Услуга без модели"
+      search:
+        fields:
+          - { property: 'name', label: 'Название' }
+          - { property: 'h1', label: 'H1' }
+      list:
+        fields:
+          - id
+          - { property: 'path', label: 'URI', type: 'url' }
+          - { property: 'name', label: 'Название' }
+          - { property: 'h1', label: 'H1' }
+          #                    - { property: 'sort', label: 'Сортировка' }
+          - { property: 'parent', label: 'Родитель' }
+        filters:
+          - {property: 'name', label: 'Название'}
+          - {property: 'path', label: 'Ссылка'}
+          - {property: 'parent', label: 'Родитель'}
+      form:
+        fields:
+          - { property: 'path', label: 'URI' }
+          - { property: 'name', label: 'Название' }
+          - { property: 'h1', label: 'H1' }
+          - { property: 'metaTitle', label: 'Мета-заголовок', help: 'Можно не указывать - генерируется автоматически' }
+          - { property: 'metaDescription', label: 'Мета-описание', type: 'textarea' }
+          - { property: 'text', label: 'Текст', type: 'fos_ckeditor' }
+          #                    - { property: 'sort', label: 'Сортировка' }
+          #                    - { property: 'images', label: 'Изображения' }
+          - { property: 'ratingValue', label: 'Рейтинг' }
+          - { property: 'ratingCount', label: 'Кол-во голосов' }
+          - { property: 'modifyDate', label: 'Дата модификации', type_options: { widget: 'single_text' } }
+          - { property: 'parent', label: 'Родитель', type: 'easyadmin_autocomplete', type_options: { class: 'App\Entity\RootService' }  }
+
+          - { property: 'service', label: 'Услуга прайса', type: 'easyadmin_autocomplete' }
+          - { property: 'priceCategory', label: 'Категория прайса', type: 'easyadmin_autocomplete', type_options: { class: 'App\Entity\PriceCategory' } }
+    Simple:
+      class: App\Entity\Simple
+      label: "Страница"
+      search:
+        fields:
+          - { property: 'name', label: 'Название' }
+          - { property: 'h1', label: 'H1' }
+      list:
+        fields:
+          - id
+          - { property: 'path', label: 'URI', type: 'url' }
+          - { property: 'name', label: 'Название' }
+          - { property: 'h1', label: 'H1' }
+          #                    - { property: 'sort', label: 'Сортировка' }
+          - { property: 'parent', label: 'Родитель' }
+        filters:
+          - {property: 'name', label: 'Название'}
+          - {property: 'path', label: 'Ссылка'}
+          - {property: 'parent', label: 'Родитель'}
+      form:
+        fields:
+          - { property: 'path', label: 'URI' }
+          - { property: 'name', label: 'Название' }
+          - { property: 'h1', label: 'H1' }
+          - { property: 'metaTitle', label: 'Мета-заголовок', help: 'Можно не указывать - генерируется автоматически' }
+          - { property: 'metaDescription', label: 'Мета-описание', type: 'textarea' }
+          - { property: 'text', label: 'Текст', type: 'fos_ckeditor' }
+          - { property: 'ratingValue', label: 'Рейтинг' }
+          - { property: 'ratingCount', label: 'Кол-во голосов' }
+          #                    - { property: 'sort', label: 'Сортировка' }
+          - { property: 'parent', label: 'Родитель', type: 'easyadmin_autocomplete' }
+    Naschiraboty:
+      class: App\Entity\Naschiraboty
+      label: "Пример работы"
+      templates:
+        edit: 'admin/global/edit_drop_zone.html.twig'
+      list:
+        fields:
+          - id
+          - { property: 'name', label: 'Название' }
+          - { property: 'clientName', label: 'Имя клиента' }
+          - { property: 'priceServicesList', label: 'Услуги' }
+          - { property: 'sum', label: 'Сумма' }
+          - { property: 'sort', label: 'Сортировка' }
+          - { property: 'imgFolder', label: 'Папка с изображениями' }
+        filters:
+          - { property: 'name', label: 'Название'}
+      form:
+        fields:
+          - { type: 'section', label: 'SEO' }
+          - { property: 'name', label: 'Название' , type: 'text'}
+          - { property: 'metaTitle', label: 'Мета-заголовок' , type: 'text', type_options: {required: true} }
+          - { property: 'metaDescription', label: 'Мета-описание', type: 'textarea', type_options: {required: true} }
+          - { type: 'section', label: 'Основные поля' }
+          - { property: 'clientName', label: 'Имя клиента' , type: 'text', type_options: {required: true} }
+          - { property: 'sum', label: 'Сумма' }
+          - { property: 'priceServices', label: 'Услуги' }
+          - { property: 'shortText', label: 'Анонс', type: 'fos_ckeditor', type_options: {required: true} }
+          - { property: 'text', label: 'Текст', type: 'fos_ckeditor' }
+          - { property: 'sort', label: 'Сортировка' }
+          - { property: 'modifyDate', label: 'Дата модификации', type_options: { widget: 'single_text' } }
+
+    Reviews:
+      class: App\Entity\Reviews
+      label: "Отзыв"
+      list:
+        fields:
+          - id
+          - { property: 'path', label: 'Ссылка', type: 'url' }
+          - { property: 'autor', label: 'Автор' }
+          - { property: 'date', label: 'Дата добавления' , type: 'date'}
+          - { property: 'ocenka', label: 'Оценка' }
+          - { property: 'imageUrl', type: 'image', label: 'Фото отзыва' }
+          - { property: 'published', label: 'Опубликовано' }
+      form:
+        fields:
+          - { type: 'section', label: 'SEO', help: 'Можно не заполнять - генерируется автоматически' }
+          - { property: 'h1', label: 'H1' , type: 'text'}
+          - { property: 'metaTitle', label: 'Мета-заголовок' , type: 'text'}
+          - { property: 'metaDescription', label: 'Мета-описание', type: 'textarea' }
+          - { type: 'section', label: 'Основные поля' }
+          - { property: 'autor', label: 'Автор' }
+          - { property: 'published', label: 'Опубликовано' }
+          - { property: 'ocenka', label: 'Оценка' }
+          - { property: 'imageFile', type: 'vich_image', label: 'Фото отзыва' }
+          - { property: 'text', label: 'Текст', type: 'fos_ckeditor' }
+          - { property: 'date', label: 'Timestamp' }
+          - { property: 'modifyDate', label: 'Дата модификации', type_options: { widget: 'single_text' } }
+    News:
+      class: App\Entity\News
+      label: "Новость"
+      list:
+        fields:
+          - id
+          - { property: 'name', label: 'Название' }
+          - { property: 'date', label: 'Дата добавления' , type: 'date'}
+          - { property: 'countViews', label: 'Количество просмотров' }
+          - { property: 'countLike', label: 'Количество лайков' }
+          - { property: 'countDislike', label: 'Количество дизлайков' }
+        #                    - { property: 'sort', label: 'Сортировка' }
+        filters:
+          - { property: 'name', label: 'Название'}
+          - { property: 'date', label: 'Дата добавления' , type: 'date'}
+      form:
+        fields:
+          - { type: 'section', label: 'SEO' }
+          - { property: 'name', label: 'Название' }
+          - { property: 'metaTitle', label: 'Мета-заголовок' }
+          - { property: 'metaDescription', label: 'Мета-описание', type: 'textarea' }
+          - { type: 'section', label: 'Основные поля' }
+          - { property: 'shortText', label: 'Анонс', type: 'fos_ckeditor' }
+          - { property: 'text', label: 'Текст', type: 'fos_ckeditor' }
+          - { property: 'sort', label: 'Сортировка' }
+          #                    - { property: 'images', label: 'Изображения' }
+          - { property: 'countViews', label: 'Количество просмотров' }
+          - { property: 'countLike', label: 'Количество лайков' }
+          - { property: 'countDislike', label: 'Количество дизлайков' }
+          - { property: 'date', label: 'Timestamp' }
+          - { property: 'modifyDate', label: 'Дата модификации', type_options: { widget: 'single_text' } }
+    Vacancy:
+      class: App\Entity\Vacancy
+      label: "Вакансия"
+      list:
+        fields:
+          - id
+          - { property: 'path', label: 'URI', type: 'url' }
+          - { property: 'name', label: 'Название' }
+          - { property: 'sort', label: 'Сортировка' }
+          - { property: 'parent', label: 'Родитель' }
+        filters:
+          - {property: 'name', label: 'Название'}
+          - {property: 'path', label: 'Ссылка'}
+          - {property: 'parent', label: 'Родитель'}
+      form:
+        fields:
+          - { property: 'path', label: 'URI' }
+          - { property: 'name', label: 'Название' }
+          - { property: 'metaTitle', label: 'Мета-заголовок' }
+          - { property: 'metaDescription', label: 'Мета-описание', type: 'textarea' }
+          - { property: 'text', label: 'Текст', type: 'fos_ckeditor' }
+          - { property: 'sort', label: 'Сортировка' }
+          - { property: 'images', label: 'Изображения' }
+          - { property: 'modifyDate', label: 'Дата модификации', type_options: { widget: 'single_text' } }
+          - { property: 'parent', label: 'Родитель', type: 'easyadmin_autocomplete' }
+    Faq:
+      class: App\Entity\Faq
+      label: "FAQ"
+      list:
+        fields:
+          - id
+          - { property: 'name', label: 'Название' }
+          - { property: 'path', label: 'Ссылка', type: 'url' }
+          - { property: 'date', label: 'Дата добавления' , type: 'date'}
+          - { property: 'autor', label: 'Автор' }
+          - { property: 'published', label: 'Опубликовано' }
+        #                    - { property: 'countViews', label: 'Количество просмотров' }
+        #                    - { property: 'countLike', label: 'Количество лайков' }
+        #                    - { property: 'countDislike', label: 'Количество дизлайков' }
+        #                    - { property: 'sort', label: 'Сортировка' }
+        filters:
+          - { property: 'name', label: 'Название'}
+          - { property: 'date', label: 'Дата добавления' , type: 'date'}
+          - { property: 'published', label: 'Опубликовано' }
+      form:
+        fields:
+          - { type: 'section', label: 'SEO', help: 'Можно не заполнять - генерируется автоматически' }
+          - { property: 'h1', label: 'H1' , type: 'text'}
+          - { property: 'metaTitle', label: 'Мета-заголовок' , type: 'text'}
+          - { property: 'metaDescription', label: 'Мета-описание', type: 'textarea' }
+          - { type: 'section', label: 'Основные поля' }
+          - { property: 'name', label: 'Название', type: 'text', type_options: {required: true} }
+          - { property: 'autor', label: 'Автор' }
+          - { property: 'published', label: 'Опубликовано' }
+          - { property: 'text', label: 'Вопрос', type: 'fos_ckeditor' }
+          - { property: 'otvetAdmin', label: 'Ответ', type: 'fos_ckeditor' }
+          #                    - { property: 'sort', label: 'Сортировка' }
+          - { property: 'countViews', label: 'Количество просмотров' }
+          - { property: 'countLike', label: 'Количество лайков' }
+          - { property: 'countDislike', label: 'Количество дизлайков' }
+          - { property: 'date', label: 'Timestamp' }
+          - { property: 'modifyDate', label: 'Дата модификации', type_options: { widget: 'single_text' } }
+    Config:
+      class: App\Entity\Config
+      label: "Параметр"
+      list:
+        fields:
+          - {property: 'title', label: 'Название параметра'}
+          - {property: 'name', label: 'Системное имя'}
+          - {property: 'value', label: 'Значение параметра'}
+      new:
+        fields:
+          - {property: 'title', label: 'Название параметра'}
+          - {property: 'name', label: 'Системное имя'}
+          - {property: 'value', label: 'Значение параметра',type: 'textarea'}
+      edit:
+        fields:
+          - {property: 'title', label: 'Название параметра'}
+          - {property: 'name', label: 'Системное имя', type_options: { disabled: true }}
+          - {property: 'value', label: 'Значение параметра',type: 'textarea'}
+    PriceBrand:
+      class: App\Entity\PriceBrand
+      label: "Марка"
+      list:
+        fields:
+          - id
+          - { property: 'name', label: 'Название' }
+          - { property: 'nameRus', label: 'Название на русском' }
+          - { property: 'class', label: 'Стоимость нормо-часа' }
+          - { property: 'increase', label: 'Надбавка' }
+          - { property: 'popular', label: 'Популярный?' }
+          - { property: 'position', label: 'Сортировка' }
+          - { property: 'imageUrl', label: 'Иконка', type: 'image' }
+          - { property: 'photoUrl', label: 'Фото', type: 'image' }
+        filters:
+          - {property: 'name', label: 'Название'}
+          - {property: 'class', label: 'Стоимость нормо-часа'}
+          - { property: 'popular', label: 'Популярный?' }
+      form:
+        fields:
+          - { property: 'name', label: 'Название' }
+          - { property: 'nameRus', label: 'Название на русском', type_options: { required: true }  }
+          - { property: 'code', label: 'Алиас', type_options: { required: true }, help: 'На его основе генерируется ссылка на страницу'  }
+          - { property: 'popular', label: 'Популярный?' }
+          - { property: 'class', label: 'Стоимость нормо-часа' }
+          - { property: 'increase', label: 'Надбавка' }
+          - { property: 'modifyDate', label: 'Дата модификации', type_options: { widget: 'single_text' } }
+          - { property: 'position', label: 'Сортировка' }
+          - { property: 'imageFile', type: 'vich_image', label: 'Иконка' }
+          - { property: 'photoFile', type: 'vich_image', label: 'Фото'  }
+    PriceModel:
+      class: App\Entity\PriceModel
+      label: "Модель"
+      list:
+        fields:
+          - id
+          - { property: 'name', label: 'Название' }
+          - { property: 'nameRus', label: 'Название на русском' }
+          - { property: 'class', label: 'Стоимость нормо-часа' }
+          - { property: 'priceBrand.name', label: 'Марка' }
+          - { property: 'popular', label: 'Популярный?' }
+          - { property: 'typeName', label: 'Тип кузова' }
+          - { property: 'imageUrl', label: 'Изображение', type: 'image' }
+        filters:
+          - { property: 'name', label: 'Название'}
+          - { property: 'class', label: 'Стоимость нормо-часа'}
+          - { property: 'priceBrand', label: 'Марка' }
+          - { property: 'popular', label: 'Популярный?' }
+      new:
+        help: 'Вы можете добавить изображение модели после сохранения'
+        fields:
+          - { property: 'name', label: 'Название' }
+          - { property: 'class', label: 'Стоимость нормо-часа' }
+          - { property: 'nameRus', label: 'Название на русском', type_options: { required: true }  }
+          - { property: 'code', label: 'Алиас', type_options: { required: true }, help: 'На его основе генерируется ссылка на страницу' }
+          - { property: 'popular', label: 'Популярный?' }
+          - { property: 'type', label: 'Тип кузова',type: choice,type_options:{choices: !php/const App\Entity\PriceModel::TYPES}}
+          - { property: 'priceBrand', label: 'Марка', type: 'easyadmin_autocomplete' }
+          - { property: 'modifyDate', label: 'Дата модификации', type_options: { widget: 'single_text' } }
+      edit:
+        help: 'Вы можете добавить изображение модели после сохранения'
+        fields:
+          - { property: 'name', label: 'Название' }
+          - { property: 'class', label: 'Стоимость нормо-часа' }
+          - { property: 'nameRus', label: 'Название на русском', type_options: { required: true }  }
+          - { property: 'code', label: 'Алиас', type_options: { required: true }, help: 'На его основе генерируется ссылка на страницу' }
+          - { property: 'popular', label: 'Популярный?' }
+          - { property: 'type', label: 'Тип кузова',type: choice,type_options:{choices: !php/const App\Entity\PriceModel::TYPES}}
+          - { property: 'priceBrand', label: 'Марка', type: 'easyadmin_autocomplete' }
+          - { property: 'modifyDate', label: 'Дата модификации', type_options: { widget: 'single_text' } }
+          - { property: 'imageFile', type: 'vich_image' }
+    PriceCategory:
+      class: App\Entity\PriceCategory
+      label: "Категория"
+      list:
+        fields:
+          - id
+          - { property: 'name', label: 'Название' }
+          - { property: 'parent', label: 'Родитель' }
+          - { property: 'children', label: 'Кол-во подкатегорий' }
+          - { property: 'priceServices', label: 'Кол-во услуг' }
+        filters:
+          - {property: 'name', label: 'Название'}
+          - { property: 'parent', label: 'Родитель' }
+      form:
+        fields:
+          - { property: 'name', label: 'Название' }
+          - { property: 'slug', label: 'Slug' }
+          - { property: 'parent', label: 'Родитель', type: 'easyadmin_autocomplete' }
+          - { property: 'children', label: 'Подкатегории', type: 'easyadmin_autocomplete', type_options: { disabled: true }  }
+          - { property: 'priceServices', label: 'Услуги', type: 'easyadmin_autocomplete', type_options: { disabled: true }  }
+    PriceService:
+      class: App\Entity\PriceService
+      label: "Услуга"
+      list:
+        fields:
+          - id
+          - { property: 'name', label: 'Название' }
+          - { property: 'slug', label: 'Slug' }
+          - { property: 'priceCategory.name', label: 'Категория' }
+          - { property: 'hours', label: 'Нормочасы' }
+          - { property: 'contents', label: 'Кол-во статей' }
+          - { property: 'published', label: 'Опубликовано' }
+        filters:
+          - {property: 'name', label: 'Название'}
+          - { property: 'priceCategory', label: 'Категория' }
+      form:
+        fields:
+          - { property: 'name', label: 'Название' }
+          - { property: 'slug', label: 'Slug', help: 'При создании можно не заполнять - сгенерируется автоматически'}
+          - { property: 'published', label: 'Опубликовано' }
+          - { property: 'priceCategory', label: 'Категория', type: 'easyadmin_autocomplete' }
+          - { property: 'hours', label: 'Нормочасы' }
+    PriceClass:
+      class: App\Entity\PriceClass
+      label: "Класс"
+      list:
+        fields:
+          - id
+          - { property: 'priceOfHour', label: 'Стоимость нормо-часа' }
+      form:
+        fields:
+          - { property: 'priceOfHour', label: 'Стоимость нормо-часа' }
+    BeforeAfter:
+      class: App\Entity\BeforeAfter
+      label: "Набор фотографий"
+      list:
+        fields:
+          - id
+          - { property: 'priceModel', label: 'Марка / Модель' }
+          - { property: 'priceServicesList', label: 'Услуги' }
+          - { property: 'beforeImgUrl', label: 'Изображение ДО', type: 'image'}
+          - { property: 'afterImgUrl', label: 'Изображение После', type: 'image'}
+        filters:
+          - { property: 'priceModel', label: 'Марка / Модель' }
+          - { property: 'priceServices', label: 'Услуги' }
+      new:
+        help: 'Загрузить фотографии можно будет после нажатия на кнопку "Применить"'
+        fields:
+          - { property: 'priceModel', label: 'Марка / Модель' }
+          - property: 'priceServices'
+            label: 'Услуги'
+            type_options:
+              mapped: true
+              expanded: true
+              multiple: true
+      edit:
+        fields:
+          - { property: 'priceModel', label: 'Марка / Модель' }
+          - { property: 'beforeFile', label: 'Изображение ДО', type: 'vich_image'}
+          - { property: 'afterFile', label: 'Изображение ПОСЛЕ', type: 'vich_image'}
+          - property: 'priceServices'
+            label: 'Услуги'
+            type_options:
+              mapped: true
+              expanded: true
+              multiple: true
+
+    Video:
+      class: App\Entity\Video
+      label: "Видео"
+      list:
+        fields:
+          - id
+          - { property: 'name', label: 'Название'}
+          - { property: 'priceModel', label: 'Марка / Модель' }
+          - { property: 'category.name', label: 'Категория' }
+          - { property: 'priceServicesList', label: 'Услуги' }
+          - { property: 'link', label: 'Ссылка на видео YouTube', type: 'url'}
+        filters:
+          - { property: 'name', label: 'Название'}
+          - { property: 'priceModel', label: 'Марка / Модель' }
+          - { property: 'priceServices', label: 'Услуги' }
+      form:
+        fields:
+          - { property: 'name', label: 'Название'}
+          - { property: 'category', label: 'Категория' }
+          - { property: 'text', label: 'Описание', type: 'fos_ckeditor'  }
+          - { property: 'priceModel', label: 'Марка / Модель' }
+          - { property: 'priceServices', label: 'Услуги' }
+          - { property: 'link', label: 'Ссылка на видео YouTube'}
+          - { property: 'imageFile', type: 'vich_file', label: 'Видео с сервера' }
+          - { type: 'section', label: 'SEO' }
+          - { property: 'h1', label: 'H1' }
+          - { property: 'metaTitle', label: 'Мета-заголовок', help: 'Можно не указывать - генерируется автоматически' }
+          - { property: 'metaDescription', label: 'Мета-описание', type: 'textarea' }
+          - { property: 'ratingValue', label: 'Рейтинг' }
+          - { property: 'ratingCount', label: 'Кол-во голосов' }
+    VideoCategory:
+      class: App\Entity\VideoCategory
+      label: "Категории видео"
+      list:
+        fields:
+          - id
+          - { property: 'name', label: 'Название'}
+          - { property: 'alias', label: 'Алиас' }
+      form:
+        fields:
+          - { property: 'name', label: 'Название' }
+          - { property: 'alias', label: 'Алиас' }
+          - { property: 'h1', label: 'H1' }
+          - { property: 'metaTitle', label: 'Мета-заголовок', help: 'Можно не указывать - генерируется автоматически' }
+          - { property: 'metaDescription', label: 'Мета-описание', type: 'textarea' }
+    OurWorks:
+      class: App\Entity\OurWorks
+      label: "Фото наших работ"
+      templates:
+        edit: 'admin/global/edit_drop_zone.html.twig'
+      list:
+        fields:
+          - id
+          - { property: 'priceModel', label: 'Марка / Модель' }
+          - { property: 'priceServicesList', label: 'Услуги' }
+          - { property: 'imgFolder', label: 'Папка с изображениями' }
+        filters:
+          - { property: 'priceModel', label: 'Марка / Модель' }
+          - { property: 'priceServices', label: 'Услуги' }
+      form:
+        fields:
+          - { property: 'priceModel', label: 'Марка / Модель' }
+          - { property: 'priceServices', label: 'Услуги', type: 'easyadmin_autocomplete' }
+    SpecialOffer:
+      class: App\Entity\SpecialOffer
+      label: "Акция"
+      list:
+        fields:
+          - 'id'
+          - {property: 'name', label: 'Название'}
+          - {property: 'slug', label: 'Алиас'}
+          - {property: 'metaTitle', label: 'Meta Title'}
+          - {property: 'oldPrice', label: 'Старая цена'}
+          - {property: 'newPrice', label: 'Новая цена'}
+          - {property: 'published', label: 'Опубликовано'}
+          - {property: 'ordering', label: 'Сортировка'}
+          - {property: 'imageUrl', type: 'image', label: 'Изображение' }
+        sort: ['ordering', 'ASC']
+      form:
+        help: 'BRAND - переменная для вставки названия марки и модели'
+        fields:
+          - {property: 'name', label: 'Название'}
+          - {property: 'description', label: 'Описание', type: 'fos_ckeditor'}
+          - {property: 'oldPrice', label: 'Старая цена',type: 'integer'}
+          - {property: 'newPrice', label: 'Новая цена',type: 'integer'}
+          - {property: 'imageFile', type: 'vich_image', label: 'Изображение' }
+          - {property: 'published', label: 'Опубликовано'}
+          - {property: 'ordering', label: 'Сортировка'}
+          - { type: 'section', label: 'SEO' }
+          - {property: 'slug', label: 'Алиас'}
+          - {property: 'h1', label: 'H1'}
+          - {property: 'metaTitle', label: 'Meta Title'}
+          - {property: 'metaDescription', label: 'Meta описание', type: 'textarea'}
+    Salon:
+      class: App\Entity\Salon
+      label: "Салон"
+      templates:
+        edit: 'admin/global/edit_drop_zone.html.twig'
+      list:
+        fields:
+          - 'id'
+          - {property: 'name', label: 'Название'}
+          - {property: 'address', label: 'Адрес'}
+          - {property: 'published', label: 'Опубликован'}
+          - {property: 'metro', label: 'Метро'}
+          - {property: 'excludedBrands', label: 'Исключено марок'}
+          - {property: 'excludedModels', label: 'Исключено моделей'}
+          - {property: 'excludedServices', label: 'Исключено услуг'}
+        sort: ['id', 'ASC']
+      new:
+        help: 'Вы можете указать на страницах каких марок, моделей и услуг не показывать данный салон. Салон не будет выводиться в том случае, если хотя бы один параметр для выбранной страницы будет находиться в исключениях. После сохранения салона появляется возможность добавления графика работы и галереи салона'
+        fields:
+          - {type: 'tab' , label: 'Основные параметры' }
+          - {property: 'name', label: 'Название'}
+          - {property: 'address', label: 'Адрес'}
+          - {property: 'slogan', label: 'Слоган'}
+          - {property: 'text', label: 'Описание', type: 'fos_ckeditor'}
+          - {property: 'published', label: 'Опубликован' }
+          - {property: 'modifyDate', label: 'Дата модификации', type_options: { widget: 'single_text' } }
+          - {property: 'avatarFile', type: 'vich_image', label: 'Аватар' }
+          - {property: 'videoLink', label: 'Ссылка на видео'}
+          - {property: 'workingHoursFrom', label: 'Работает с'}
+          - {property: 'workingHoursTo', label: 'Работает по'}
+          - {property: 'phone', label: 'Телефон'}
+          - {property: 'metro', label: 'Метро'}
+          - {property: 'alias', label: 'Псевдоним'}
+          - {type: 'tab' , label: 'Районы обслуживания' }
+          - {property: 'city', label: 'Город'}
+          - property:  'selectAllDistricts'
+            label: 'Выбрать все районы'
+            type: 'checkbox'
+            type_options:
+              mapped: false
+              attr: {data-target: 'salon_districts',class: 'check_all'}
+          - property: 'districts'
+            label: 'Районы'
+            type_options:
+              mapped: true
+              expanded: true
+              multiple: true
+          - property:  'selectAllSubwayStations'
+            label: 'Выбрать все станции метро'
+            type: 'checkbox'
+            type_options:
+              mapped: false
+              attr: {data-target: 'salon_subwayStations',class: 'check_all'}
+          - property: 'subwayStations'
+            label: 'Станции метро'
+            type_options:
+              mapped: true
+              expanded: true
+              multiple: true
+          - {type: 'tab' , label: 'Дополнительные параметры' }
+          - {property: 'waPhone', label: 'Телефон Whatsapp'}
+          - {property: 'mangoId', label: 'ID Mango'}
+          - {property: 'yandexTarget', label: 'Название события Yandex.Metrika'}
+          - {property: 'yandexMapLink', label: 'Ссылка на Яндекс.Карту'}
+          - {property: 'yandexNavigatorLink', label: 'Ссылка на Яндекс.Навигатор'}
+          - {property: 'googleMapLink', label: 'Ссылка на Google Map'}
+          - {type: 'tab' , label: 'Исключить марки' }
+          - property:  'selectAllBrands'
+            label: 'Выбрать все'
+            type: 'checkbox'
+            type_options:
+              mapped: false
+              attr: {data-target: 'salon_excludedBrands',class: 'check_all'}
+          - property: 'excludedBrands'
+            label: 'Исключить марки'
+            type_options:
+              mapped: true
+              expanded: true
+              multiple: true
+          - { type: 'tab' , label: 'Исключить модели' }
+          - property:  'selectAllModels'
+            label: 'Выбрать все'
+            type: 'checkbox'
+            type_options:
+              mapped: false
+              attr: {data-target: 'salon_excludedModels',class: 'check_all'}
+          - property: 'excludedModels'
+            label: 'Исключить модели'
+            type_options:
+              mapped: true
+              expanded: true
+              multiple: true
+          - { type: 'tab' , label: 'Исключить услуги' }
+          - property:  'selectAllServices'
+            label: 'Выбрать все'
+            type: 'checkbox'
+            type_options:
+              mapped: false
+              attr: {data-target: 'salon_excludedServices',class: 'check_all'}
+          - property: 'excludedServices'
+            label: 'Исключить услуги'
+            type_options:
+              mapped: true
+              expanded: true
+              multiple: true
+      edit:
+        help: 'Вы можете указать на страницах каких марок, моделей и услуг не показывать данный салон. Салон не будет выводиться в том случае, если хотя бы один параметр для выбранной страницы будет находиться в исключениях.'
+        fields:
+          - {type: 'tab' , label: 'Основные параметры' }
+          - {property: 'name', label: 'Название'}
+          - {property: 'address', label: 'Адрес'}
+          - {property: 'slogan', label: 'Слоган'}
+          - {property: 'text', label: 'Описание', type: 'fos_ckeditor'}
+          - {property: 'published', label: 'Опубликован' }
+          - {property: 'modifyDate', label: 'Дата модификации', type_options: { widget: 'single_text' } }
+#          - {property: 'imageFile', type: 'vich_image', label: 'Аватар' }
+          - {property: 'avatarFile', type: 'vich_image', label: 'Аватар' }
+          - {property: 'videoLink', label: 'Ссылка на видео'}
+          - {property: 'workingHoursFrom', label: 'Работает с'}
+          - {property: 'workingHoursTo', label: 'Работает по'}
+          - {property: 'phone', label: 'Телефон'}
+          - {property: 'metro', label: 'Метро'}
+          - {property: 'alias', label: 'Псевдоним'}
+          - { type: 'tab', label: 'График работы' }
+          - property:  'workingDays'
+            label: 'Рабочие дни'
+            type: 'collection'
+            type_options:
+              help : '(Добавляется после сохраниения салона)'
+              entry_type: App\Form\WorkingDayAdminType
+          - {type: 'tab' , label: 'Районы обслуживания' }
+          - {property: 'city', label: 'Город'}
+          - property:  'selectAllDistricts'
+            label: 'Выбрать все районы'
+            type: 'checkbox'
+            type_options:
+              mapped: false
+              attr: {data-target: 'salon_districts',class: 'check_all'}
+          - property: 'districts'
+            label: 'Районы'
+#            type: entity
+            type_options:
+#              class: 'App\Entity\District'
+              mapped: true
+#              expanded: false
+              expanded: true
+              multiple: true
+#              group_by: city
+          - property:  'selectAllSubwayStations'
+            label: 'Выбрать все станции метро'
+            type: 'checkbox'
+            type_options:
+              mapped: false
+              attr: {data-target: 'salon_subwayStations',class: 'check_all'}
+          - property: 'subwayStations'
+            label: 'Станции метро'
+#            type: entity
+            type_options:
+#              class: 'App\Entity\SubwayStation'
+              mapped: true
+#              expanded: false
+              expanded: true
+              multiple: true
+#              group_by: subwayLine
+          - {type: 'tab' , label: 'Дополнительные параметры' }
+          - {property: 'waPhone', label: 'Телефон Whatsapp'}
+          - {property: 'mangoId', label: 'ID Mango'}
+          - {property: 'yandexTarget', label: 'Название события Yandex.Metrika'}
+          - {property: 'yandexMapLink', label: 'Ссылка на Яндекс.Карту'}
+          - {property: 'yandexNavigatorLink', label: 'Ссылка на Яндекс.Навигатор'}
+          - {property: 'googleMapLink', label: 'Ссылка на Google Map'}
+          - {type: 'tab' , label: 'Исключить марки' }
+          - property:  'selectAllBrands'
+            label: 'Выбрать все'
+            type: 'checkbox'
+            type_options:
+              mapped: false
+              attr: {data-target: 'salon_excludedBrands',class: 'check_all'}
+          - property: 'excludedBrands'
+            label: 'Исключить марки'
+            type_options:
+              mapped: true
+              expanded: true
+              multiple: true
+          - { type: 'tab' , label: 'Исключить модели' }
+          - property:  'selectAllModels'
+            label: 'Выбрать все'
+            type: 'checkbox'
+            type_options:
+              mapped: false
+              attr: {data-target: 'salon_excludedModels',class: 'check_all'}
+          - property: 'excludedModels'
+            label: 'Исключить модели'
+            type_options:
+              mapped: true
+              expanded: true
+              multiple: true
+          - { type: 'tab' , label: 'Исключить услуги' }
+          - property:  'selectAllServices'
+            label: 'Выбрать все'
+            type: 'checkbox'
+            type_options:
+              mapped: false
+              attr: {data-target: 'salon_excludedServices',class: 'check_all'}
+          - property: 'excludedServices'
+            label: 'Исключить услуги'
+            type_options:
+              mapped: true
+              expanded: true
+              multiple: true
+    City:
+      class: App\Entity\City
+      label: "Город"
+      list:
+        fields:
+          - id
+          - { property: 'id', label: 'ID' }
+          - { property: 'name', label: 'Название' }
+          - { property: 'mainCity', label: 'Основной город' }
+        filters:
+          - { property: 'id', label: 'ID' }
+          - { property: 'name', label: 'Название' }
+      form:
+        fields:
+          - { property: 'name', label: 'Название' }
+          - { property: 'code', label: 'Алиас', type_options: { required: true }, help: 'На его основе генерируется ссылка на страницу'  }
+          - { property: 'mainCity', label: 'Основной город' }
+    District:
+      class: App\Entity\District
+      label: "Район"
+      list:
+        fields:
+          - id
+          - { property: 'id', label: 'ID' }
+          - { property: 'name', label: 'Название' }
+          - { property: 'city', label: 'Город' }
+        filters:
+          - { property: 'id', label: 'ID' }
+          - { property: 'name', label: 'Название' }
+          - { property: 'city', label: 'Город' }
+      form:
+        fields:
+          - { property: 'name', label: 'Название' }
+          - { property: 'code', label: 'Алиас', type_options: { required: true }, help: 'На его основе генерируется ссылка на страницу'  }
+          - { property: 'city', label: 'Город', type: 'easyadmin_autocomplete' }
+    SubwayLine:
+      class: App\Entity\SubwayLine
+      label: "Линия метро"
+      list:
+        fields:
+          - id
+          - { property: 'id', label: 'ID' }
+          - { property: 'name', label: 'Название' }
+          - { property: 'city', label: 'Город' }
+        filters:
+          - { property: 'id', label: 'ID' }
+          - { property: 'name', label: 'Название' }
+          - { property: 'city', label: 'Город' }
+      form:
+        fields:
+          - { property: 'name', label: 'Название' }
+          - { property: 'hexColor', label: 'Цвет в формате hex' }
+          - { property: 'city', label: 'Город', type: 'easyadmin_autocomplete' }
+    SubwayStation:
+      class: App\Entity\SubwayStation
+      label: "Станция метро"
+      list:
+        fields:
+          - id
+          - { property: 'id', label: 'ID' }
+          - { property: 'name', label: 'Название' }
+          - { property: 'subwayLine', label: 'Линия метро' }
+          - { property: 'subwayLine.city', label: 'Город' }
+        filters:
+          - { property: 'id', label: 'ID' }
+          - { property: 'name', label: 'Название' }
+          - { property: 'subwayLine', label: 'Линия метро' }
+      form:
+        fields:
+          - { property: 'name', label: 'Название' }
+          - { property: 'code', label: 'Алиас', type_options: { required: true }, help: 'На его основе генерируется ссылка на страницу'  }
+          - { property: 'subwayLine', label: 'Линия метро', type: 'easyadmin_autocomplete' }
+    WorkingDay:
+      class: App\Entity\WorkingDay
+      label: "Рабочий день"

@@ -1,0 +1,48 @@
+.auto-services {
+  text-align: center;
+  margin: 40px 0 !important;
+  display: flex;
+  justify-content: center;
+}
+
+.auto-service-item {
+  background: linear-gradient(0, #eae7e5, #ffffff) !important;
+  margin: 10px !important;
+  padding: 0 !important;
+  border-radius: 22px;
+  border: 1px solid lightgray;
+  overflow: hidden;
+  margin-bottom: 10px !important;
+  width: 332px;
+}
+
+.auto-services a {
+  display: block;
+  color: black !important;
+}
+
+.auto-services img {
+  float: left;
+  width: 110px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.auto-services-text {
+  float: left;
+  font-size: 14px;
+  line-height: 43px;
+  padding: 10px 7px;
+}
+
+.auto-services-name {
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.auto-services-price {
+  color: #3B9CCF;
+  font-weight: bold;
+}
