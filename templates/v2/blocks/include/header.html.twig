@@ -1,5 +1,5 @@
 <header class="page-header page-header--fixed">
-    <div class="page-header__top">
+    {#<div class="page-header__top">
         <div class="uk-container">
             <div class="page-header__top-inner">
                 {% for salon in salons(page ?? null) %}
@@ -29,5 +29,59 @@
                 <div class="btn-mobile-menu"><a href="#mobile-menu" data-uk-toggle="">☰</a></div>
             </div>
         </div>
+    </div>#}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="btn-content"><img style="width: 200.22px;" src="https://437e81e1-5ed1-4d53-bed7-e6f8d97dcc9b.selcdn.net/ea/ba/6a/62e6b16756e0fe93f21473165a620a6e09/213x65q8/Logo%20333KKK.jpg" data-lazy-image_quality="8" class=""></div>
+            </div>
+            <div class="col-md-6">
+                <div class="main-menu">
+                    <nav class="nav">
+                        <ul class="nav-list uk-navbar" data-uk-navbar="">
+                            <li><a href="#">Главная</a></li>
+                            <li><a href="#">Наши услуги</a></li>
+                            <li><a href="#">О нас</a></li>
+                            <li><a href="#">Контакты</a></li>
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-between">
+                <div class="header-address__wrapper d-flex flex-column">
+                            <span>г.Москва, ул.Декабристов, владение 47а</span>
+                            <span>+7(495) 640-00-10</span>
+                </div>
+                <div class="header__social-block d-flex">
+                    <a class="btn btn-legacy css6 hvr-grow font-text d-flex align-items-center" data-action="linknew" href="https://t.me/StudioStyleD" target="_blank">
+                        <div class="btn-content">
+                            <img  src="https://437e81e1-5ed1-4d53-bed7-e6f8d97dcc9b.selcdn.net/52/94/58/da57ff315e546b95bf1cec14adcdb2919e/44x35q8/TelN.png" data-lazy-image_quality="8" class="">
+                        </div>
+                    </a>
+
+                    <a class="btn btn-legacy css6 hvr-grow font-text d-flex align-items-center" data-action="linknew" href="https://www.instagram.com/styled.cc/" target="_blank">
+
+                        <div class="btn-content">
+                            <img src="https://437e81e1-5ed1-4d53-bed7-e6f8d97dcc9b.selcdn.net/5a/ae/09/326474f790b4a9a8da17db3f3063121191/28x29q8/Инст%209.png" data-lazy-image_quality="8" class="">
+                        </div>
+                    </a>
+
+                    <a class="btn btn-legacy css6 hvr-grow font-text d-flex align-items-center" data-action="linknew" href="https://api.whatsapp.com/send?phone=74956400010 " target="_blank">
+
+                        <div class="btn-content">
+                            <img src="https://437e81e1-5ed1-4d53-bed7-e6f8d97dcc9b.selcdn.net/c3/3e/bd/162a9359a132e7c909a292d46c6a82d082/48x37q8/WSN.png" data-lazy-image_quality="8" class="">
+                        </div>
+                        </a>
+
+                </div>
+
+            </div>
+        </div>
     </div>
+
+
+
+
 </header>
