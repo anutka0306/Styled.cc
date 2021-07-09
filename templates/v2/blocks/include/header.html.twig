@@ -33,10 +33,15 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-2">
-                <div class="btn-content"><img style="width: 200.22px;" src="https://437e81e1-5ed1-4d53-bed7-e6f8d97dcc9b.selcdn.net/ea/ba/6a/62e6b16756e0fe93f21473165a620a6e09/213x65q8/Logo%20333KKK.jpg" data-lazy-image_quality="8" class=""></div>
+            <div class="col-md-2 col-8">
+                <div class="btn-content"><img style="width: 200.22px;" src="{{ asset('img/Logo.jpg') }}" data-lazy-image_quality="8" class=""></div>
             </div>
-            <div class="col-md-6">
+            <div class="col-4 d-md-none">
+                <div class="btn-mobile-menu d-flex justify-content-end">
+                    <a href="#mobile-menu" data-uk-toggle="">☰</a>
+                </div>
+            </div>
+            <div class="col-md-6 d-none d-md-flex justify-content-md-center main-menu__block">
                 <div class="main-menu">
                     <nav class="nav">
                         <ul class="nav-list uk-navbar" data-uk-navbar="">
@@ -48,8 +53,9 @@
                         </ul>
                     </nav>
                 </div>
+
             </div>
-            <div class="col-md-4 d-flex justify-content-between">
+            <div class="col-md-4 d-md-flex justify-content-md-between d-none address-and-social__block">
                 <div class="header-address__wrapper d-flex flex-column">
                             <span>г.Москва, ул.Декабристов, владение 47а</span>
                             <span>+7(495) 640-00-10</span>

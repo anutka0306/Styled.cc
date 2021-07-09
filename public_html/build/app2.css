@@ -747,7 +747,7 @@ body {
 }
 
 .uk-offcanvas-bar {
-  background-color: #0e0e0f;
+  background-color: #000000;
   color: #ffffff;
 }
 
@@ -3302,7 +3302,7 @@ body {
     margin-left: 20px;
   }
   .nav-list {
-    display: none;
+    /*display: none;*/
   }
   .nav-list > li {
     padding: 5px 0;

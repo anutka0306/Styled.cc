@@ -1,26 +1,10 @@
 <div id="mobile-menu" data-uk-offcanvas="mode: reveal">
     <div class="uk-offcanvas-bar"><button class="uk-offcanvas-close" type="button" data-uk-close=""></button>
         <div class="uk-margin-remove-top">
-            <div class="logo"><img class="logo__img" src="/assets/images/logo.png" alt="DETAILINGOF" /></div>
+            <div class="logo"><img class="logo__img" src="{{ asset('img/Logo.jpg') }}" alt="STYLED.CC" /></div>
         </div>
         <div class="uk-margin">
             <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav="multiple: true">
-                <li class="uk-parent"><a href="{{ path('uslugi') }}">Услуги</a>
-                    <ul class="uk-nav-sub">
-                        {% for item in items %}
-                        {# @var item \App\Dto\ServiceMenuItemDto #}
-                        <li class="uk-parent">
-                            <a href="#">{{ item.name }}</a>
-                            <ul class="uk-nav-sub">
-                                {% for service in item.items %}
-                                    {# @var service \App\Entity\RootService #}
-                                    <li><a href="{{ service.path }}">{{ service.name }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </li>
                 {{ include('v2/blocks/include/main_menu_items.html.twig') }}
             </ul>
         </div>

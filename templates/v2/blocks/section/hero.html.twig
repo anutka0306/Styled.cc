@@ -39,14 +39,41 @@
 <div class="fullscreen-bg">
     <div class="overlay">
         <div class="fullscreen-bg__content d-flex flex-column align-items-center">
-            <div>logo</div>
-            <div>slogan</div>
-            <div>menu</div>
-            <div>button</div>
+            <div class="short-logo">
+                <img src="{{ asset('img/short_logo.png') }}" alt="Styled.cc автосервис"/>
+            </div>
+            <div class="header-slogan">
+                Компания Styled делает ваши автомобили интереснее и лучше с 2010 года. Сделаем кузов блестящим, защитим и придадим стиля.
+            </div>
+            {# Menu #}
+            <div class="fullscreen-bg__content_menu d-flex justify-content-between">
+                <div class="fullscreen-bg__content_menu-item d-flex flex-column align-items-center justify-content-center">
+                    <img src="{{ asset('img/header-menu-icon1.png') }}" alt=""/>
+                    <a href="#">Винил и винилография</a>
+                </div>
+                <div class="fullscreen-bg__content_menu-item d-flex flex-column align-items-center justify-content-center">
+                    <img src="{{ asset('img/header-menu-icon2.png') }}" alt=""/>
+                    <a href="#">Оклейка полеуретаном</a>
+                </div>
+                <div class="fullscreen-bg__content_menu-item d-flex flex-column align-items-center justify-content-center">
+                    <img src="{{ asset('img/header-menu-icon3.png') }}" alt=""/>
+                    <a href="#">Детейлинг</a>
+                </div>
+                <div class="fullscreen-bg__content_menu-item d-flex flex-column align-items-center justify-content-center">
+                    <img src="{{ asset('img/header-menu-icon1.png') }}" alt=""/>
+                    <a href="#">Шумоизоляция</a>
+                </div>
+            </div>
+
+            {# Callback button#}
+            <div class="callback-btn">
+                <button type="button">Оставить заявку</button>
+            </div>
+
         </div>
-        <h1>Простой пример<br>фонового видео на сайте</h1>
+
     </div>
     <video loop="" muted="" autoplay="" poster="{{ asset('video/video_bg.jpg') }}" class="fullscreen-bg__video">
-        <source src="{{ asset('video/video_bg.mp4') }}" type="video/mp4">
+        <source src="{{ asset('video/video_bg1.mp4') }}" type="video/mp4">
     </video>
 </div>
