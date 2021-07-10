@@ -1460,12 +1460,12 @@
 .header-address__wrapper span{
     text-align: right;
     font-family: "Open Sans", sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     color: #ffffff;
     font-weight: bold;
 }
 .header-address__wrapper span:first-child{
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 .header__social-block img{
     width: 80%;
@@ -1531,10 +1531,10 @@
     font-family: "Open Sans";
     margin-top: 10px;
 }
-.fullscreen-bg__content .callback-btn{
-    margin-top: 50px;
-}
+
+
 .fullscreen-bg__content .callback-btn button{
+    margin-top: 50px;
     background-color: rgb(120, 183, 41);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -1548,7 +1548,9 @@
     border-color: rgb(96, 146, 33);
     padding-top: 8px;
     padding-bottom: 8px;
-    font-size: 25px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 22px;
     font-weight: bold;
     color: rgb(0, 0, 0)!important;
     font-family: "Open Sans";

@@ -3,6 +3,9 @@
 {% block h1 %}
     <span>Кузовной</span> <span>ремонт</span> <span class="small-text">в Москве</span><span class="circle"></span>
 {% endblock %}
+{% block videofon %}
+    {{ include('v2/blocks/section/hero.html.twig',{ h1 : block('h1') ?? page.h1 }) }}
+{% endblock %}
 
 {% block breadcrumbs %}{% endblock %}
 
